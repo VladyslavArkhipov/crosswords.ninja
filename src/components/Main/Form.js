@@ -1,7 +1,8 @@
-import { crossgen } from "../utils/crossgen";
-import createPDF from "../utils/createPDF";
+import { crossgen } from "../../utils/crossgen";
+import createPDF from "../../utils/createPDF";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "./Form.module.css"; // Импортируйте CSS-модуль
 
 export default function Form() {
   const [words, setWords] = useState("");
@@ -29,22 +30,25 @@ export default function Form() {
     <div className="content">
       <div className="crossgen">
         <div className="form">
-          <div className="words">
-            <div className="input_wrapper">
+          <div className={styles.words}>
+            <div className={styles.inputWrapper}>
               <textarea
+                className={styles.textarrea}
                 type="text"
                 placeholder="Insert words to generate crossword (max. 15)"
                 onChange={handleChange}
                 value={words}
               ></textarea>
             </div>
-            <p>
+            <p className={styles.text}>
               *The first word you insert becomes the main theme of your
               crossword puzzle.
             </p>
           </div>
-          <div className="controls">
-            <button onClick={handleClick}>Generate</button>
+          <div className={styles.controls}>
+            <button onClick={handleClick} className={styles.button}>
+              Generate
+            </button>
           </div>
         </div>
         <div className="result"></div>

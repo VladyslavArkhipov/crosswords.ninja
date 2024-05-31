@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./Main/Header";
 import { useDispatch, useSelector } from "react-redux";
 export default function CrosswordDisplay() {
   const dispatch = useDispatch();
