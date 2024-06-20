@@ -14,6 +14,7 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
+  debug: true, // Включение отладочного режима
   session: {
     strategy: "jwt",
   },
