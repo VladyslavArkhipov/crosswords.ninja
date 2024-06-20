@@ -13,6 +13,11 @@ const userSchema = new Schema({
     required: true,
     type: String,
   },
+  generations: {
+    required: true,
+    type: Number,
+    default: 5,
+  },
 });
 
 export const User = mongoose.models.User ?? mongoose.model("User", userSchema);

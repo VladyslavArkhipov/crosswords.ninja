@@ -15,6 +15,7 @@ export const reducer = (state = defaultState, action) => {
         ...state,
         isCrosswordHidden: false,
       };
+
     default:
       return state;
   }

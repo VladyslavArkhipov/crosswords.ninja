@@ -31,7 +31,7 @@ export default function Form() {
       <div className="crossgen">
         <div className="form">
           <div className={styles.words}>
-            <div className={styles.inputWrapper}>
+            <div className={styles.textarreaWrapper}>
               <textarea
                 className={styles.textarrea}
                 type="text"

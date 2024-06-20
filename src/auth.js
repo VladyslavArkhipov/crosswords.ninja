@@ -5,6 +5,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { User } from "./model/user-model";
 import bcrypt from "bcryptjs";
+import { createUser } from "@/queries/users";
+import { dbConnect } from "@/lib/mongo";
 
 export const {
   handlers: { GET, POST },
@@ -36,7 +38,7 @@ export const {
             );
 
             if (isMatch) {
-              return user;
+              return { user };
             } else {
               throw new Error("Email or Password is not correct");
             }
@@ -60,4 +62,26 @@ export const {
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, account, profile }) {
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+
+      if (profile) {
+        const existingUser = await User.findOne({ email: profile.email });
+        if (!existingUser) {
+          await dbConnect();
+          const newUser = {
+            name: profile.name,
+            email: profile.email,
+            password: "google user",
+          };
+          await createUser(newUser);
+        }
+      }
+
+      return token;
+    },
+  },
 });
