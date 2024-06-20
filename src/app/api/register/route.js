@@ -11,7 +11,6 @@ export const POST = async (request) => {
 
   // Create a DB Connection
   try {
-    console.log("Connecting to the database...");
     await dbConnect();
   } catch (err) {
     console.error("Database connection error:", err);
