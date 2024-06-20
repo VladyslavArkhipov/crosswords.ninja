@@ -17,20 +17,17 @@ const RegistrationForm = () => {
       const email = formData.get("email");
       const password = formData.get("password");
 
-      const response = /* await fetch(`/api/register` */ await fetch(
-        `https://crosswords-ninja.vercel.app/api/register`,
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        }
-      );
+      const response = await fetch(`/api/register`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
 
       response.status === 201 && router.push("/");
     } catch (e) {
