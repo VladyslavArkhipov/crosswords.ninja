@@ -1,12 +1,10 @@
 "use client";
-import { useState } from "react";
 import Title from "./Title";
 import Header from "./Header";
-import { useSelector } from "react-redux";
 import Footer from "./Footer";
 import Logout from "../Authorization/Logout";
 
-export default function MainDisplay() {
+export default function MainDisplay(props) {
   async function fetchData() {
     const response = await fetch("/api/chatgpt", {
       method: "POST",
@@ -20,23 +18,17 @@ export default function MainDisplay() {
     console.log("RESPONSE", response);
   }
 
-  const isCrosswordHidden = useSelector((state) => state.isCrosswordHidden);
-  console.log(isCrosswordHidden);
-
   return (
     <>
-      {isCrosswordHidden && (
-        <>
-          <Header />
-          {/* Зона теста чатаГПТ */}
-          <h1>TEXT</h1>
-          <button onClick={fetchData}>Click me</button>
-          {/* Зона теста чатаГПТ */}
-          <Logout></Logout>
-          <Title />
-          <Footer></Footer>
-        </>
-      )}
+      <>
+        <Header user={props.user} />
+        {/* Зона теста чатаГПТ */}
+        <h1>TEXT</h1>
+        <button onClick={fetchData}>Click me</button>
+        {/* Зона теста чатаГПТ */}
+        <Title />
+        <Footer></Footer>
+      </>
     </>
   );
 }

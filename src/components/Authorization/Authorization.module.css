@@ -112,3 +112,15 @@
 
 
   }
+
+  .logout{
+    background: none;
+    font-size: 18px;
+font-weight: 700;
+line-height: 27px;
+text-align: center;
+color: rgba(255, 255, 255, 1);
+cursor: pointer;
+border-style: none;
+padding: 0;
+  }

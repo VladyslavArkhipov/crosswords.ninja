@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./Title.module.css"; // Импортируйте CSS-модуль
 
 import Form from "./Form";

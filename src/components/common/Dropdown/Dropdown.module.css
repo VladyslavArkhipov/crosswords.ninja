@@ -1,0 +1,78 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .dropdown_toggle {
+    position: relative;
+    padding: 10px;
+    border: 2px solid #D5FF00;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+  }
+
+  .dropdown_toggle::after{
+    content: '';
+    width:  100%;
+    height:  100%;
+    position: absolute;
+    top: 3px; /* Смещение вниз */
+    left: 3px; /* Смещение вправо */
+    border-right: 2px solid #D5FF00;
+    border-bottom: 2px solid #D5FF00;
+    border-radius: 6px ;
+    z-index: 0; /* Под кнопкой */
+    
+  }
+  
+ 
+  
+  .dropdown_menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1a1a1a;
+    border: 2px solid #D5FF00;
+    border-radius: 4px;
+    margin-top: 5px;
+    z-index: 1;
+    width: 100%;
+  }
+  
+  .dropdown_item {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .dropdown_item:hover {
+    background-color: #333333;
+  }
+  
+  .email{
+    margin-right: 10px;
+    font-size: 18px;
+font-weight: 700;
+line-height: 27px;
+text-align: center;
+color: rgba(255, 255, 255, 1);
+  }
+
+
+  
+  
+  

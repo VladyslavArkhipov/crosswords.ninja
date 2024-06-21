@@ -1,7 +1,7 @@
+"use client";
 import { crossgen } from "../../utils/crossgen";
 import createPDF from "../../utils/createPDF";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import styles from "./Form.module.css"; // Импортируйте CSS-модуль
 
 export default function Form() {
@@ -11,18 +11,11 @@ export default function Form() {
     setWords(event.target.value);
   }
 
-  const dispatch = useDispatch();
-  const isCrosswordHidden = useSelector((state) => state.isCrosswordHidden);
-  const showCrossword = () => {
-    dispatch({ type: "SHOW_CROSSWORD", payload: false });
-  };
-
   function handleClick() {
     crossgen(1, words);
     //createPDF(); //загрузить пдф
     console.log("Button clicked");
     setWords("");
-    showCrossword();
     console.log(isCrosswordHidden);
   }
 
