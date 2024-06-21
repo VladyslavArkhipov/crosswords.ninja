@@ -21,33 +21,41 @@ export const {
   providers: [
     CredentialsProvider({
       credentials: {
-        email: {},
-        password: {},
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (credentials === null) return null;
+        if (!credentials) {
+          console.error("Credentials are missing");
+          return null;
+        }
+
+        await dbConnect(); // Убедитесь, что подключение к базе данных выполняется
 
         try {
           const user = await User.findOne({
-            email: credentials?.email,
+            email: credentials.email,
           });
-          console.log(user);
-          if (user) {
-            const isMatch = await bcrypt.compare(
-              credentials.password,
-              user.password
-            );
 
-            if (isMatch) {
-              return { user };
-            } else {
-              throw new Error("Email or Password is not correct");
-            }
-          } else {
+          if (!user) {
+            console.error("User not found");
             throw new Error("User not found");
           }
+
+          const isMatch = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+
+          if (!isMatch) {
+            console.error("Invalid password");
+            throw new Error("Email or Password is not correct");
+          }
+
+          return { id: user._id, email: user.email, name: user.name };
         } catch (error) {
-          throw new Error(error);
+          console.error("Error during authorization:", error);
+          throw new Error("Internal server error");
         }
       },
     }),

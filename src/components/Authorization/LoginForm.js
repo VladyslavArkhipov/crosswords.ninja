@@ -5,34 +5,38 @@ import SocialLogins from "./SocialLogins";
 import { doCredentialLogin } from "@/app/actions";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
-  const router = useRouter();
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function onSubmit(event) {
     event.preventDefault();
+    setIsLoading(true);
+    setError("");
+
     try {
       const formData = new FormData(event.currentTarget);
 
       const response = await doCredentialLogin(formData);
 
-      if (!!response.error) {
+      if (response.error) {
         console.error(response.error);
         setError(response.error.message);
       } else {
-        router.push("/");
+        window.location.reload(); // Перезагрузить страницу
       }
     } catch (e) {
       console.error(e);
       setError("Check your Credentials");
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
     <>
-      <div className="">{error}</div>
+      {error && <div className="error-message">{error}</div>}
       <SocialLogins />
       <p className={styles.modalText}>or</p>
       <form onSubmit={onSubmit}>
@@ -43,6 +47,7 @@ const LoginForm = () => {
             name="email"
             id="email"
             placeholder="Email"
+            required
           />
         </div>
 
@@ -53,11 +58,16 @@ const LoginForm = () => {
             name="password"
             id="password"
             placeholder="Password"
+            required
           />
         </div>
 
-        <button type="submit" className={styles.loginButton}>
-          Continue
+        <button
+          type="submit"
+          className={styles.loginButton}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : "Continue"}
         </button>
       </form>
     </>
