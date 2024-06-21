@@ -64,7 +64,7 @@ const LoginForm = () => {
 
         <button
           type="submit"
-          className={styles.loginButton}
+          className={styles.submit_button}
           disabled={isLoading}
         >
           {isLoading ? "Loading..." : "Continue"}

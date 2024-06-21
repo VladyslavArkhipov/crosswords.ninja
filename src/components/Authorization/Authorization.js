@@ -38,11 +38,11 @@ const Authorization = ({ setIsAuthorizationVisible }) => {
             </p>
             <LoginForm />
 
-            <p className="my-3">
+            <p className={styles.modalText}>
               Don't you have an account?
               <button
                 onClick={handleClickRegistration}
-                className="mx-2 underline"
+                className={styles.link_button}
               >
                 Register
               </button>

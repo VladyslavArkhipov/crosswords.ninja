@@ -1,19 +1,20 @@
 import RegistrationForm from "./RegistrationForm";
-import Link from "next/link";
+import styles from "./Authorization.module.css"; // Импортируйте CSS-модуль
 
 export default function Registration({ setIsRegistrationVisible }) {
   const handleClick = () => {
     setIsRegistrationVisible(false);
   };
   return (
-    <div className="flex flex-col justify-center items-center m-4">
+    <>
+      <h1 className={styles.modalHeader}>Registration</h1>
       <RegistrationForm />
-      <p className="my-3">
+      <p className={styles.modalText}>
         Already have an account?
-        <button onClick={handleClick} className="mx-2 underline">
-          Login
+        <button onClick={handleClick} className={styles.link_button}>
+          Sign in
         </button>
       </p>
-    </div>
+    </>
   );
 }
