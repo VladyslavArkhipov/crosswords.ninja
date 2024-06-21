@@ -5,9 +5,9 @@ import { dbConnect } from "@/lib/mongo";
 
 export const POST = async (request) => {
   const start = Date.now(); // Начало отсчета времени выполнения
-  const { name, email, password } = await request.json();
+  const { email, password } = await request.json();
 
-  console.log("Received data:", name, email, password);
+  console.log("Received data:", email, password);
 
   // Create a DB Connection
   try {
@@ -35,7 +35,6 @@ export const POST = async (request) => {
 
   // Form a DB payload
   const newUser = {
-    name,
     password: hashedPassword,
     email,
   };

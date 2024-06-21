@@ -29,7 +29,6 @@ const RegistrationForm = () => {
     try {
       const formData = new FormData(event.currentTarget);
 
-      const name = formData.get("name");
       const email = formData.get("email");
       const password = formData.get("password");
 
@@ -41,7 +40,6 @@ const RegistrationForm = () => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          name,
           email,
           password,
         }),
@@ -78,15 +76,6 @@ const RegistrationForm = () => {
       )}
 
       <form ref={formRef} onSubmit={handleSubmit}>
-        <div className="my-2">
-          <input
-            className={styles.loginInput}
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter the name"
-          />
-        </div>
         <div className="my-2">
           <input
             className={styles.loginInput}
