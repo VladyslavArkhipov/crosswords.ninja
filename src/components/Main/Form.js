@@ -3,6 +3,7 @@ import { crossgen } from "../../utils/crossgen";
 import createPDF from "../../utils/createPDF";
 import React, { useState } from "react";
 import styles from "./Form.module.css"; // Импортируйте CSS-модуль
+import InputTag from "../common/Input/InputTag";
 
 export default function Form() {
   const [words, setWords] = useState("");
@@ -25,13 +26,14 @@ export default function Form() {
         <div className="form">
           <div className={styles.words}>
             <div className={styles.textarreaWrapper}>
-              <textarea
+              {/* <textarea
                 className={styles.textarrea}
                 type="text"
                 placeholder="Insert words to generate crossword (max. 15)"
                 onChange={handleChange}
                 value={words}
-              ></textarea>
+              ></textarea> */}
+              <InputTag />
             </div>
             <p className={styles.text}>
               *The first word you insert becomes the main theme of your

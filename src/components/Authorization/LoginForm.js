@@ -43,6 +43,16 @@ const LoginForm = () => {
         <div>
           <input
             className={styles.loginInput}
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div>
+          <input
+            className={styles.loginInput}
             type="password"
             name="password"
             id="password"
