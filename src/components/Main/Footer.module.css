@@ -3,3 +3,11 @@
     justify-content: center;
     margin-bottom: 30px;
 }
+
+.footer_light {
+    color: white;
+}
+
+.footer_dark {
+    color: black;
+}

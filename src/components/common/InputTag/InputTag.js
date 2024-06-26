@@ -1,33 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { WithContext as ReactTags } from "react-tag-input";
 
 // Specifies which characters should terminate tags input. An array of character codes.
 const KeyCodes = {
-  comma: 188,
   enter: 13,
 };
 
-const delimiters = [KeyCodes.comma, KeyCodes.enter];
+const delimiters = [KeyCodes.enter];
 
-const InputTag = (props) => {
+const InputTag = ({ setWords }) => {
   const [tags, setTags] = React.useState([]);
+
+  // Use useEffect to update the parent component's state
+  useEffect(() => {
+    setWords(tags.map((tag) => tag.text).join(" "));
+  }, [tags, setWords]);
 
   // Method to delete tag from Array
   const handleDelete = (i) => {
-    setTags((prevTags) => {
-      const updatedTags = prevTags.filter((tag, index) => index !== i);
-      props.setWords(updatedTags.map((tag) => tag.text).join(" "));
-      return updatedTags;
-    });
+    setTags((prevTags) => prevTags.filter((tag, index) => index !== i));
   };
 
   // Method to Add tag into Array
   const handleAddition = (tag) => {
-    setTags((prevTags) => {
-      const newTags = [...prevTags, tag];
-      props.setWords(newTags.map((tag) => tag.text).join(" "));
-      return newTags;
-    });
+    setTags((prevTags) => [...prevTags, tag]);
   };
 
   return (
@@ -40,6 +36,7 @@ const InputTag = (props) => {
         inputFieldPosition="bottom"
         autocomplete
         allowDragDrop={false}
+        placeholder="Press enter to add tags"
       />
     </div>
   );

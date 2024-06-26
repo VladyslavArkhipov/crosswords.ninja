@@ -3,21 +3,44 @@ import { crossgen } from "../../utils/crossgen";
 import createPDF from "../../utils/createPDF";
 import React, { useState } from "react";
 import styles from "./Form.module.css"; // Импортируйте CSS-модуль
-import InputTag from "../common/Input/InputTag";
+import { useRouter } from "next/navigation"; // Импортируем хук useRouter
+
+import InputTag from "../common/InputTag/InputTag";
 
 export default function Form() {
   const [words, setWords] = useState("");
+  const router = useRouter(); // Создаем экземпляр роутера
 
   function handleChange(event) {
     setWords(event.target.value);
   }
 
-  function handleClick() {
+  /* function handleClick() {
+    //сценарий нажатия кнопки: моя строка уходит на сервер, из нее берутся слова и отправляются чату гпт для вопросов, снимается одна генерация, если все окей то моя строка возвращается от сервера и работает через функцию для генерации кроссворда, плюс возвращаются каким-то образом вопросы
     crossgen(1, words);
     //createPDF(); //загрузить пдф
     console.log("Button clicked");
-    setWords("");
-    console.log(isCrosswordHidden);
+  } */
+  async function handleClick() {
+    try {
+      const response = await fetch("/api/submitWords", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ words }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // Переходим на страницу /generatedCrossword и передаем words как query параметр
+        router.push(`/generatedCrossword?words=${encodeURIComponent(words)}`);
+      } else {
+        console.error("Error submitting words");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 
   return (
@@ -26,14 +49,7 @@ export default function Form() {
         <div className="form">
           <div className={styles.words}>
             <div className={styles.textarreaWrapper}>
-              {/* <textarea
-                className={styles.textarrea}
-                type="text"
-                placeholder="Insert words to generate crossword (max. 15)"
-                onChange={handleChange}
-                value={words}
-              ></textarea> */}
-              <InputTag />
+              <InputTag setWords={setWords} />{" "}
             </div>
             <p className={styles.text}>
               *The first word you insert becomes the main theme of your

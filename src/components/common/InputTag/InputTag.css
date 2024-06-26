@@ -1,0 +1,126 @@
+#tags {
+  position: relative;
+  width: 626px;
+  border: 2px solid #272C25;
+  z-index: 2;
+  
+  padding: 10px 12px 10px 12px  ;
+  background-color: transparent;
+  border-radius: 6px;
+  outline: none;
+  resize: none;
+  margin-bottom: 8px;
+
+
+  }
+  
+  #tags .ReactTags__tags {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  #tags .ReactTags__selected {
+    display: flex;
+  }
+  
+  #tags .ReactTags__clearAll {
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    background: #f88d8d;
+    color: #fff;
+    border: none;
+  }
+  
+  #tags .ReactTags__tagInput input{
+    display: inline-block;
+    width: 626px;
+    background: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  
+  #tags .ReactTags__tagInput input.ReactTags__tagInputField, #tags .ReactTags__tagInput input.ReactTags__tagInputField:focus {
+    height: 31px;
+    margin: 0;
+    min-width: 150px;
+  }
+  
+  #tags .ReactTags__editInput {
+    border-radius: 1px;
+  }
+  
+  #tags .ReactTags__editTagInput {
+    display: inline-flex;
+  }
+  
+  #tags .ReactTags__selected span.ReactTags__tag {
+    border: 1px solid #ddd;
+    background: rgba(236, 235, 235, 1);
+    color: black;
+    font-size: 16px;
+    display: flex;
+    padding: 5px;
+    margin: 0 5px;
+    border-radius: 6px;
+
+  }
+  
+  #tags .ReactTags__selected a.ReactTags__remove {
+    color: black;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  #tags .ReactTags__suggestions {
+    position: absolute;
+  }
+  
+  #tags .ReactTags__suggestions ul {
+    list-style-type: none;
+    box-shadow: 0.05em 0.01em 0.5em rgba(0, 0, 0, 0.2);
+    background: black;
+    width: 200px;
+  }
+  
+  #tags .ReactTags__suggestions li {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0;
+  }
+  
+  #tags .ReactTags__suggestions li mark {
+    text-decoration: underline;
+    background: none;
+    font-weight: 600;
+  }
+  
+  #tags .ReactTags__suggestions ul li.ReactTags__activeSuggestion {
+    background: #b7cfe0;
+    cursor: pointer;
+  }
+  
+  #tags .ReactTags__remove {
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: black;
+    margin-left: 5px;
+    padding-top: 3px;
+  }
+  
+  #tags input {
+    background-color: #f9f9f9;
+    border: none;
+    outline: none;
+  }
+  
+  #tags input:before {
+    border: none;
+  }
+
+  #tags svg{
+    fill: black;
+  }

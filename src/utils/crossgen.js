@@ -63,6 +63,7 @@ function dwcs(c) {
       '"><table class="cross">' +
       cr +
       "</table></form>";
+
   return cr;
 }
 
@@ -151,6 +152,7 @@ function crossgen_part() {
   var timeout = 0;
   do {
     words = sufe(words);
+    console.log(words);
     if (HEAP[words.join("-")] == undefined) {
       var jr = {};
       jr["crossword"] = gcd(words);

@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./reset.css";
+import "../components/common/InputTag/InputTag.css";
 
 import { dbConnect } from "@/lib/mongo";
 

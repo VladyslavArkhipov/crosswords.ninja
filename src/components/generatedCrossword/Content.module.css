@@ -1,0 +1,16 @@
+.container{
+    background:url( ../../assets/BG.svg);
+    background-color: rgba(39, 44, 37, 1);
+}
+
+.wrapper{
+    padding: 30px 470px;
+    background-color: white;
+}
+
+.crossword_wrapper{
+    padding: 0px 80px;
+    background:url( ../../assets/Watermark.svg);
+    background-color: white;
+    background-repeat: no-repeat;
+}
