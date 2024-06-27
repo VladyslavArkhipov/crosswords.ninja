@@ -1,16 +1,58 @@
+
+
 .container{
     background:url( ../../assets/BG.svg);
+    background-size: cover;
+    background-repeat: repeat;
     background-color: rgba(39, 44, 37, 1);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .wrapper{
     padding: 30px 470px;
-    background-color: white;
+    position: relative;
 }
 
 .crossword_wrapper{
     padding: 0px 80px;
     background:url( ../../assets/Watermark.svg);
+    background-size: cover;
+    background-repeat: repeat;
     background-color: white;
-    background-repeat: no-repeat;
 }
+
+.pdf_wrapper{
+    position: absolute;
+    top: calc(100% - 62px);
+    left:70%;
+}
+
+.questions_wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 22px;
+    background-color: white;
+}
+
+.questions{
+    width: 219px;
+
+}
+
+.questions_header{
+    display: flex;
+    align-items: center;
+}
+
+.questions_header h2{
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.6px;
+    text-align: left;
+
+}
+

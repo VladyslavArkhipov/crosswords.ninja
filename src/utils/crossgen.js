@@ -43,15 +43,16 @@ function dwcs(c) {
   var cr = "",
     o = "",
     m = c["crossword"];
+  console.log(c);
   for (var j = 0; j < m.length; j++) {
     o = "";
     for (var i = 0; i < m[j].length; i++) {
       if (parseInt(m[j][i]) > 0) {
-        o += '<td class="num">' + m[j][i] + "</td>";
+        o += '<td class="num cell">' + m[j][i] + "</td>";
       } else if (m[j][i] != SPACE) {
-        o += '<td class="let"><span>' + m[j][i] + "</span></td>";
+        o += '<td class="let cell"><span>' + /* m[j][i] + */ "</span></td>";
       } else {
-        o += "<td></td>";
+        o += "<td class='cell'></td>";
       }
     }
     cr += '<tr valign="middle">' + o + "</tr>";
@@ -126,6 +127,7 @@ function gcd(t) {
         d.push(y);
       }
     }
+  console.log(d);
   return d;
 }
 
@@ -152,7 +154,6 @@ function crossgen_part() {
   var timeout = 0;
   do {
     words = sufe(words);
-    console.log(words);
     if (HEAP[words.join("-")] == undefined) {
       var jr = {};
       jr["crossword"] = gcd(words);

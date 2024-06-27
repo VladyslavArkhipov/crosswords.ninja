@@ -51,3 +51,39 @@ text-align: center;
     z-index: 0; /* Под кнопкой */
     
   }
+
+  /* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+  .headerWrapper {
+      flex-direction: column;
+      padding: 20px 40px;
+  }
+
+  .user_info_container_text {
+      font-size: 16px;
+      margin-left: 4px;
+      margin-right: 16px;
+  }
+
+  .headerButton {
+      padding: 8px 20px;
+      font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerWrapper {
+      padding: 15px 20px;
+  }
+
+  .user_info_container_text {
+      font-size: 14px;
+      margin-left: 2px;
+      margin-right: 10px;
+  }
+
+  .headerButton {
+      padding: 6px 15px;
+      font-size: 14px;
+  }
+}

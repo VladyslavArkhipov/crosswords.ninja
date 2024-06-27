@@ -1,6 +1,5 @@
 "use client";
 import { crossgen } from "../../utils/crossgen";
-import createPDF from "../../utils/createPDF";
 import React, { useState } from "react";
 import styles from "./Form.module.css"; // Импортируйте CSS-модуль
 import { useRouter } from "next/navigation"; // Импортируем хук useRouter
@@ -63,9 +62,6 @@ export default function Form() {
           </div>
         </div>
         <div className="result"></div>
-        <div className="load_more hidden">
-          <button className="control pdf">Загрузить в PDF</button>
-        </div>
       </div>
     </div>
   );
