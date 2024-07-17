@@ -1,11 +1,6 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "./reset.css";
-import "../components/common/InputTag/InputTag.css";
-
 import { dbConnect } from "@/lib/mongo";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +11,7 @@ export default async function RootLayout({ children }) {
   const conn = await dbConnect();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

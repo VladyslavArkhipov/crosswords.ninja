@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Dropdown.module.css"; // Импортируйте CSS-модуль
 import Toggler from "@/assets/Toggler";
 import Logout from "@/components/Authorization/Logout";
+import Link from "next/link";
 
 const Dropdown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,6 @@ const Dropdown = (props) => {
       <div className={styles.dropdown_toggle} onClick={toggleMenu}>
         <p className={styles.email}>{props.email}</p>
         <Toggler />
-        {/* <span className={styles.arrow}>{isOpen ? "▲" : "▼"}</span> */}
       </div>
       {isOpen && (
         <div className={styles.dropdown_menu}>
@@ -33,7 +33,7 @@ const Dropdown = (props) => {
             className={styles.dropdown_item}
             onClick={() => handleOptionClick("buy")}
           >
-            Buy credits
+            <Link href="/buy_credits">Buy credits</Link>
           </div>
           <div className={styles.dropdown_item}>
             <Logout onClick={() => handleOptionClick("signout")}></Logout>

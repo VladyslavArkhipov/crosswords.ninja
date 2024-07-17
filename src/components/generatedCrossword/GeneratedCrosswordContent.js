@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import Header from "../Main/Header";
 import Footer from "../Main/Footer";
-import styles from "./Content.module.css";
+import styles from "./GeneratedCrosswordContent.module.css";
 import Download from "@/assets/Download";
 import ArrowRight from "@/assets/ArrowRight";
 import ArrowDown from "@/assets/ArrowDown";
@@ -12,7 +12,7 @@ import ArrowDown from "@/assets/ArrowDown";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export default function Content(props) {
+export default function generatedCrosswordContent(props) {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const params = useSearchParams();
   const [words, setWords] = useState(null);

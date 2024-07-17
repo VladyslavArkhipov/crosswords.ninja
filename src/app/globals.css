@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'Mulish';
+  src: url(../fonts/Mulish-Bold.ttf);
+  src: url(../fonts/Mulish-Medium.ttf);
+  src: url(../fonts/Mulish-ExtraBold.ttf);
+  src: url(../fonts/Mulish-Light.ttf);
+  src: url(../fonts/Mulish-Regular.ttf);
+  src: url(../fonts/Mulish-SemiBold.ttf);
+  src: url(../fonts/Mulish-Italic.ttf);
+  src: url(../fonts/Mulish-ExtraLight.ttf);
+  src: url(../fonts/Mulish-Black.ttf);
+}
+
+*,body{
+  font-family: 'Mulish';
+}
+
 .gen_item{
   padding: 20px;
   margin: 0 auto;

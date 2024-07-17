@@ -4,7 +4,6 @@ import { useState } from "react";
 import Title from "./Title";
 import Header from "./Header";
 import Footer from "./Footer";
-import PaymentButton from "./PaymentButton ";
 
 export default function MainDisplay(props) {
   const [responseData, setResponseData] = useState(null);
@@ -28,9 +27,6 @@ export default function MainDisplay(props) {
     }
   }
 
-  // Вызываем функцию для отправки запроса
-  fetchData();
-
   return (
     <>
       <>
@@ -46,9 +42,6 @@ export default function MainDisplay(props) {
         )}
         {/* Зона теста чатаГПТ */}
 
-        {/* Зона теста оплаты */}
-        <PaymentButton />
-        {/* Зона теста оплаты */}
         <Title />
         <Footer></Footer>
       </>
