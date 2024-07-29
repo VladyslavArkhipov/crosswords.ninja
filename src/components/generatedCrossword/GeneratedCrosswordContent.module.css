@@ -39,12 +39,14 @@
 
 .questions{
     width: 219px;
+    
 
 }
 
 .questions_header{
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .questions_header h2{
@@ -56,3 +58,7 @@
 
 }
 
+
+.question{
+    margin-bottom: 8px;
+}

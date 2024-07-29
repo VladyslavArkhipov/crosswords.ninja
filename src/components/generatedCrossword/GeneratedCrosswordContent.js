@@ -12,23 +12,76 @@ import ArrowDown from "@/assets/ArrowDown";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-export default function generatedCrosswordContent(props) {
+export default function GeneratedCrosswordContent(props) {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const params = useSearchParams();
-  const [words, setWords] = useState(null);
+  const [words, setWords] = useState([]);
+  const [answer, setAnswer] = useState([]);
   const wrapperRef = useRef(null);
   const buttonRef = useRef(null);
+  const [horizontalArray, setHorizontalArray] = useState([]);
+  const [verticalArray, setVerticalArray] = useState([]);
 
   useEffect(() => {
-    const wordsParam = params.get("words");
-    if (wordsParam) {
-      setWords(wordsParam);
+    const dataParam = params.get("data");
+    if (dataParam) {
+      const parsedData = JSON.parse(decodeURIComponent(dataParam));
+      setWords(parsedData.words);
+      setAnswer(parsedData.answer);
     }
   }, [params]);
 
   useEffect(() => {
-    if (words) {
-      crossgen(1, words);
+    if (words.length) {
+      // Используем функцию генерации кроссворда
+      const [isCrosswordGeneratedSuccesfully, wordsDirection] = crossgen(
+        1,
+        words
+      );
+      const fetchChatGPTResponse = async () => {
+        try {
+          const chatgptString = `Слова по горизонтали: ${wordsDirection[0]}. Слова по вертикали: ${wordsDirection[1]}.`;
+          const chatGptResponse = await fetch("/api/chatgpt", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ chatgptString }),
+          });
+
+          if (chatGptResponse.ok) {
+            const chatGptData = await chatGptResponse.json();
+            console.log(chatGptData.answer);
+
+            const [_, horizontalQuestions, verticalQuestions] =
+              chatGptData.answer.split(/Across:|Down:/);
+
+            // Функция для извлечения вопросов из строки
+            const extractQuestions = (questionsString) => {
+              return questionsString
+                .trim()
+                .split(/(?=\d\.\s)/) // Разделяем по числу, за которым следует точка и пробел
+                .map((q) => q.trim()) // Убираем лишние пробелы
+                .filter((q) => q); // Убираем пустые элементы
+            };
+
+            // Извлекаем вопросы
+            setHorizontalArray(extractQuestions(horizontalQuestions));
+            setVerticalArray(extractQuestions(verticalQuestions));
+
+            console.log("Вопросы по горизонтали:", horizontalArray);
+            console.log("Вопросы по вертикали:", verticalArray);
+
+            setAnswer(chatGptData.answer); // Заполнение ответа
+          } else {
+            console.error("Error requesting chatgpt");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+
+      fetchChatGPTResponse();
     }
   }, [words]);
 
@@ -62,13 +115,13 @@ export default function generatedCrosswordContent(props) {
     input.style.padding = "100px";
 
     // Увеличить размер шрифта всех элементов внутри wrapper в 2 раза
-    const originalFontSizes = [];
+    /* const originalFontSizes = [];
     const elements = input.querySelectorAll("*");
     elements.forEach((element, index) => {
       const style = window.getComputedStyle(element);
       originalFontSizes[index] = style.fontSize;
       element.style.fontSize = `calc(${style.fontSize} * 2)`;
-    });
+    }); */
 
     html2canvas(input)
       .then((canvas) => {
@@ -121,12 +174,22 @@ export default function generatedCrosswordContent(props) {
                 <h2>Across</h2>
                 <ArrowRight />
               </div>
+              {horizontalArray.map((question, index) => (
+                <p className={styles.question} key={index}>
+                  {question}
+                </p>
+              ))}
             </div>
             <div className={styles.questions}>
               <div className={styles.questions_header}>
                 <h2>Down</h2>
                 <ArrowDown />
               </div>
+              {verticalArray.map((question, index) => (
+                <p className={styles.question} key={index}>
+                  {question}
+                </p>
+              ))}
             </div>
           </div>
           {!isButtonClicked ? (

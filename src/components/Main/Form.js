@@ -9,36 +9,45 @@ import InputTag from "../common/InputTag/InputTag";
 export default function Form() {
   const [words, setWords] = useState("");
   const router = useRouter(); // Создаем экземпляр роутера
+  const [error, setError] = useState(false);
+  const errorMessage = "With these words we can't make a crossword!";
 
   function handleChange(event) {
     setWords(event.target.value);
   }
 
-  /* function handleClick() {
-    //сценарий нажатия кнопки: моя строка уходит на сервер, из нее берутся слова и отправляются чату гпт для вопросов, снимается одна генерация, если все окей то моя строка возвращается от сервера и работает через функцию для генерации кроссворда, плюс возвращаются каким-то образом вопросы
-    crossgen(1, words);
-    //createPDF(); //загрузить пдф
-    console.log("Button clicked");
-  } */
+  // Удаленные части кода для отправки запроса к ChatGPT
   async function handleClick() {
-    try {
-      const response = await fetch("/api/submitWords", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ words }),
-      });
+    const [isCrosswordGeneratedSuccesfully, wordsDirection] = crossgen(
+      1,
+      words
+    );
+    if (!isCrosswordGeneratedSuccesfully) setError(true);
+    if (isCrosswordGeneratedSuccesfully) {
+      try {
+        // Удаленный код, отправляющий запросы к ChatGPT
+        const response = await fetch("/api/submitWords", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ words }),
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        // Переходим на страницу /generatedCrossword и передаем words как query параметр
-        router.push(`/generatedCrossword?words=${encodeURIComponent(words)}`);
-      } else {
-        console.error("Error submitting words");
+        if (response.ok) {
+          const data = await response.json();
+
+          // Обработка данных, если необходимо
+
+          // Перенаправление на страницу с кроссвордом
+          const query = encodeURIComponent(JSON.stringify({ words }));
+          router.push(`/generatedCrossword?data=${query}`);
+        } else {
+          console.error("Error submitting words");
+        }
+      } catch (error) {
+        console.error("Error:", error);
       }
-    } catch (error) {
-      console.error("Error:", error);
     }
   }
 
@@ -46,6 +55,7 @@ export default function Form() {
     <div className="content">
       <div className="crossgen">
         <div className="form">
+          {error && <p className="error">{errorMessage}</p>}
           <div className={styles.words}>
             <div className={styles.textarreaWrapper}>
               <InputTag setWords={setWords} />{" "}

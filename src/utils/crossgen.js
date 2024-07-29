@@ -8,6 +8,12 @@ var SPACE = " ",
   wp,
   p,
   o;
+let wordsDirection = false;
+
+const errors = {
+  noWords: "Please enter some words!",
+  notValidWords: "With these words we can't make a crossword!",
+};
 
 function asch(e, y, q) {
   var q = !!q;
@@ -43,7 +49,8 @@ function dwcs(c) {
   var cr = "",
     o = "",
     m = c["crossword"];
-  console.log(c);
+  wordsDirection = findWords(m);
+
   for (var j = 0; j < m.length; j++) {
     o = "";
     for (var i = 0; i < m[j].length; i++) {
@@ -127,7 +134,6 @@ function gcd(t) {
         d.push(y);
       }
     }
-  console.log(d);
   return d;
 }
 
@@ -136,16 +142,14 @@ export function crossgen(s, words) {
   TTL = 0;
   if (s) {
     var words = pwrd(words);
-    if (words.length == 0) return false;
     clearTimeout(TIMER);
     CDS = [];
     FRS = words;
     HEAP = {};
   }
-  TIMER = setTimeout(function () {
-    crossgen_part();
-  }, 500);
-  return true;
+  const crossword = crossgen_part();
+  if (!crossword) return false;
+  return [true, wordsDirection];
 }
 
 function crossgen_part() {
@@ -161,25 +165,29 @@ function crossgen_part() {
         jr["id"] = CDS.length;
         CNT++;
         document.querySelector(".result").innerHTML += dwcs(jr);
-        //export const crossword = dwcs(jr);
         const crossword = dwcs(jr);
         CDS.push(jr);
-        return; // Прекращаем выполнение функции после первого найденного кроссворда
+        return true; // Явно возвращаем true
       }
       HEAP[words.join("-")] = 1;
     }
     timeout++;
   } while (CNT < need && timeout < 100);
+
   TTL++;
   if (TTL > 200) {
-    if (CDS.length > 0) '<div class="no_more">Кроссвордики кончились</div>';
-    else
-      '<div class="no_more">Из заданных слов невозможно составить кроссворд :(</div>';
+    if (CDS.length > 0) {
+      document.querySelector(".result").innerHTML +=
+        '<div class="no_more">Кроссвордики кончились</div>';
+      return true; // Явно возвращаем true, если кроссворды закончились
+    } else {
+      return false; // Явно возвращаем false, если ничего не найдено
+    }
   } else if (CNT < need) {
-    TIMER = setTimeout(function () {
-      crossgen_part();
-    }, 500);
+    return crossgen_part(); // Рекурсивный вызов и возвращение результата
   }
+
+  return false; // Явно возвращаем false, если вышли из цикла без выполнения условия
 }
 
 function acls(a, n, d) {
@@ -291,4 +299,53 @@ function awr(c1, r1, o1, w1, w3, q1) {
     return c;
   }
   return false;
+}
+
+function findWords(crossword) {
+  let horizontalWords = [];
+  let verticalWords = [];
+
+  // Функция для добавления слов в массив
+  function addWordIfValid(wordArray, word) {
+    // Проверяем, что слово не пустое, не состоит только из цифр и имеет длину более 2
+    if (word !== "" && !/^\d+$/.test(word) && word.length > 2) {
+      wordArray.push(word);
+    }
+  }
+
+  // Поиск горизонтальных слов
+  for (let i = 0; i < crossword.length; i++) {
+    let word = "";
+    for (let j = 0; j < crossword[i].length; j++) {
+      let char = crossword[i][j];
+      if (char !== " ") {
+        word += char;
+      } else if (word !== "") {
+        addWordIfValid(horizontalWords, word);
+        word = "";
+      }
+    }
+    if (word !== "") {
+      addWordIfValid(horizontalWords, word);
+    }
+  }
+
+  // Поиск вертикальных слов
+  for (let j = 0; j < crossword[0].length; j++) {
+    let word = "";
+    for (let i = 0; i < crossword.length; i++) {
+      let char = crossword[i][j];
+      if (char !== " ") {
+        word += char;
+      } else if (word !== "") {
+        addWordIfValid(verticalWords, word);
+        word = "";
+      }
+    }
+    if (word !== "") {
+      addWordIfValid(verticalWords, word);
+    }
+  }
+
+  return [horizontalWords, verticalWords];
 }
