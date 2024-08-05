@@ -5,22 +5,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Простая функция для локального ответа в случае ошибки API
-
-export async function POST(req) {
-  const { chatgptString } = await req.json();
-
-  try {
-    if (!chatgptString) {
-      throw new Error("Words are required");
-    }
-
-    const completion = await openai.chat.completions.create({
-      messages: [
-        {
-          role: "user",
-          content: `
-Your task:
+const prompt = `Your task:
 
 1. Create questions for a crossword puzzle using the words from the list.
 2. The questions should be written in the same language as the words.
@@ -54,20 +39,29 @@ Across:
 Down:
 2. What is the water that falls from the sky called?
 4. What can you use to write on paper with ink?
-Your words:
+Your words:`;
 
-${chatgptString}
+// Простая функция для локального ответа в случае ошибки API
 
-`,
+export async function POST(req) {
+  const { chatgptString } = await req.json();
+
+  try {
+    if (!chatgptString) {
+      throw new Error("Words are required");
+    }
+
+    const completion = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "user",
+          content: prompt + chatgptString,
         },
       ],
       model: "gpt-4o-mini",
     });
 
-    console.log(completion.choices[0]);
-
     const answer = completion.choices[0].message.content;
-    console.log(answer);
 
     return NextResponse.json({ answer }, { status: 200 });
   } catch (error) {

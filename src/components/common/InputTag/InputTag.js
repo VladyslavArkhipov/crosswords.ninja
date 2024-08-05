@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { WithContext as ReactTags } from "react-tag-input";
+import styles from "./InputTag.module.css"; // Импортируйте CSS-модуль
+import "./InputTag.css";
 
 // Specifies which characters should terminate tags input. An array of character codes.
 const KeyCodes = {
@@ -27,17 +29,19 @@ const InputTag = ({ setWords }) => {
   };
 
   return (
-    <div id="tags">
-      <ReactTags
-        tags={tags}
-        delimiters={delimiters}
-        handleDelete={handleDelete}
-        handleAddition={handleAddition}
-        inputFieldPosition="bottom"
-        autocomplete
-        allowDragDrop={false}
-        placeholder="Press enter to add tags"
-      />
+    <div className={styles.textarreaWrapper}>
+      <div id="tags">
+        <ReactTags
+          tags={tags}
+          delimiters={delimiters}
+          handleDelete={handleDelete}
+          handleAddition={handleAddition}
+          inputFieldPosition="bottom"
+          autocomplete
+          allowDragDrop={false}
+          placeholder="Insert words to generate crossword (max. 15)"
+        />
+      </div>
     </div>
   );
 };

@@ -148,7 +148,7 @@ export function crossgen(s, words) {
     HEAP = {};
   }
   const crossword = crossgen_part();
-  if (!crossword) return false;
+  if (!crossword) return [false, wordsDirection];
   return [true, wordsDirection];
 }
 
@@ -164,7 +164,8 @@ function crossgen_part() {
       if (jr["crossword"]) {
         jr["id"] = CDS.length;
         CNT++;
-        document.querySelector(".result").innerHTML += dwcs(jr);
+        if (document.querySelector(".result"))
+          document.querySelector(".result").innerHTML += dwcs(jr);
         const crossword = dwcs(jr);
         CDS.push(jr);
         return true; // Явно возвращаем true

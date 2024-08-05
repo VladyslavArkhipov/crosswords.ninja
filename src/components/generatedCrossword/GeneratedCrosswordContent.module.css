@@ -38,9 +38,8 @@
 }
 
 .questions{
-    width: 219px;
+    width: calc(50% - 20px);
     
-
 }
 
 .questions_header{
@@ -62,3 +61,4 @@
 .question{
     margin-bottom: 8px;
 }
+

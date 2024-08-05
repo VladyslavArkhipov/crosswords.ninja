@@ -5,15 +5,20 @@ import styles from "./Form.module.css"; // Импортируйте CSS-моду
 import { useRouter } from "next/navigation"; // Импортируем хук useRouter
 
 import InputTag from "../common/InputTag/InputTag";
+import ModalMessage from "../common/ModalMessage/ModalMessage";
 
 export default function Form() {
   const [words, setWords] = useState("");
   const router = useRouter(); // Создаем экземпляр роутера
   const [error, setError] = useState(false);
-  const errorMessage = "With these words we can't make a crossword!";
+  const [errorMessage, setErrorMessage] = useState("");
+  const style = {
+    marginTop: words.length > 80 ? "82px" : words.length > 40 ? "40px" : "",
+  };
+  const wordsArray = words.split(" ");
 
-  function handleChange(event) {
-    setWords(event.target.value);
+  function closeModal() {
+    setError(false);
   }
 
   // Удаленные части кода для отправки запроса к ChatGPT
@@ -22,7 +27,24 @@ export default function Form() {
       1,
       words
     );
-    if (!isCrosswordGeneratedSuccesfully) setError(true);
+    if (!isCrosswordGeneratedSuccesfully) {
+      setError(true);
+      setErrorMessage("With these words we can't make a crossword!");
+      return;
+    }
+
+    if (wordsArray.length > 15) {
+      setError(true);
+      setErrorMessage("You can insert only 15 words!");
+      return;
+    }
+
+    if (wordsArray.length < 3) {
+      setError(true);
+      setErrorMessage("You must insert at least 3 words!");
+      return;
+    }
+
     if (isCrosswordGeneratedSuccesfully) {
       try {
         // Удаленный код, отправляющий запросы к ChatGPT
@@ -53,25 +75,36 @@ export default function Form() {
 
   return (
     <div className="content">
+      {error && (
+        <ModalMessage
+          messageType="error"
+          message={
+            error
+              ? errorMessage
+              : "Oops! Something went wrong. Please regenerate your crossword or contact us by emailing example@gmail.com."
+          }
+          closeModal={closeModal}
+        />
+      )}
       <div className="crossgen">
         <div className="form">
-          {error && <p className="error">{errorMessage}</p>}
           <div className={styles.words}>
-            <div className={styles.textarreaWrapper}>
-              <InputTag setWords={setWords} />{" "}
-            </div>
-            <p className={styles.text}>
+            <InputTag setWords={setWords} />{" "}
+            {/* <p className={`${styles.text} bodyS bodySMedium`}>
               *The first word you insert becomes the main theme of your
               crossword puzzle.
-            </p>
+            </p> */}
           </div>
           <div className={styles.controls}>
-            <button onClick={handleClick} className={styles.button}>
+            <button
+              onClick={handleClick}
+              className={`${styles.button} bodyL bodyLBold`}
+              style={style}
+            >
               Generate
             </button>
           </div>
         </div>
-        <div className="result"></div>
       </div>
     </div>
   );

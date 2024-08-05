@@ -1,0 +1,39 @@
+.container{
+    position: absolute;
+    top:20%;
+    left: 35%;
+    
+}
+
+.wrapper{
+    padding: 16px 8px 16px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.info{
+background-color: rgba(213, 255, 0, 1);
+}
+
+.error{
+background-color: rgba(251, 213, 213, 1);
+}
+
+.success{
+    background-color: rgba(188, 240, 218, 1);
+}
+
+.icon{
+    margin-right: 8px;
+}
+
+.close{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    left: 6px;
+    top: -6px;
+}

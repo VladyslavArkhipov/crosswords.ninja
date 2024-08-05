@@ -24,7 +24,7 @@ const Dropdown = (props) => {
   return (
     <div className={styles.dropdown}>
       <div className={styles.dropdown_toggle} onClick={toggleMenu}>
-        <p className={styles.email}>{props.email}</p>
+        <p className={`${styles.email} bodyL bodyLExtraBold`}>{props.email}</p>
         <Toggler />
       </div>
       {isOpen && (

@@ -1,0 +1,31 @@
+.gen_item{
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+   table.cross {
+    border-collapse:collapse;
+  }
+  
+   table.cross td{
+    height:22px;
+    width:22px;
+    font-size:16px;
+    text-align:center;
+    font-family:sans-serif;
+  }
+  
+   table.cross td.let {
+    border:solid 1px;
+    background-color:transparent;
+    font-size:10px;
+    
+  }
+  
+   table.cross td.num {
+    font-size:10px
+  }
+  

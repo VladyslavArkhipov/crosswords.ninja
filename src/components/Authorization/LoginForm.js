@@ -38,7 +38,7 @@ const LoginForm = () => {
     <>
       {error && <div className="error-message">{error}</div>}
       <SocialLogins />
-      <p className={styles.modalText}>or</p>
+      <p className={`${styles.modalText} bodyM bodyMRegular`}>or</p>
       <form onSubmit={onSubmit}>
         <div>
           <input

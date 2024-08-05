@@ -1,4 +1,4 @@
-import MainDisplay from "../components/Main/MainDisplay";
+import MainDisplay from "../components/MainDisplay/MainDisplay";
 import { auth } from "@/auth";
 import { User } from "@/model/user-model";
 

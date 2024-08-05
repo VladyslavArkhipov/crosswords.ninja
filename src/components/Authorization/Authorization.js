@@ -32,8 +32,8 @@ const Authorization = ({ setIsAuthorizationVisible }) => {
       <div className={styles.modalContainer} ref={modalRef}>
         {!isRegistrationVisible && (
           <>
-            <h1 className={styles.modalHeader}>Sign In</h1>
-            <p className={styles.modalText}>
+            <h2 className={styles.modalHeader}>Sign In</h2>
+            <p className="bodyL bodyLRegular">
               To unlock all the features please Sign In
             </p>
             <LoginForm />

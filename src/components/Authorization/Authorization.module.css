@@ -9,11 +9,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 3;
   }
   
   .modalContainer {
-    width:  436px;
+    width:  439px;
+    position: relative;
     padding: 32px;
     border-radius: 6px;
     border: 3px solid rgba(39, 44, 37, 1);
@@ -22,26 +23,29 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    z-index: 1001;
+    z-index: 2;
+  }
+
+  .modalContainer::after {
+    content: '';
+    position: absolute;
+    width:  439px;
+    height: 93%;
+    top: 6px;
+    left: 6px;
+    border-radius: 6px;
+    border-right: 3px solid rgba(39, 44, 37, 1);
+    border-bottom: 3px solid rgba(39, 44, 37, 1);
+    z-index: -11000;
+    padding: 20px;
+    background-color: white;
   }
 
   .modalHeader {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 38.4px;
   text-align: center;
   margin-bottom: 8px;
-
   }
 
-  .modalText {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 27px;
-    text-align: center;
-    margin: 0px;
-  }
-  
   .googleButton {
     margin: 0 auto;
     margin-top: 24px;
@@ -196,4 +200,8 @@ padding: 0;
     position: relative;
     left: 25px;
     top: -10px;
+  }
+
+  .modalText{
+    margin: 12px 0;
   }

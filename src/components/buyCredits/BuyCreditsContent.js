@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import MainDisplay from "../Main/MainDisplay";
+import MainDisplay from "../MainDisplay/MainDisplay";
 import styles from "./BuyCreditsContent.module.css";
 import GenerationSelector from "./GenerationSelector";
 import PaymentButton from "./PaymentButton ";
