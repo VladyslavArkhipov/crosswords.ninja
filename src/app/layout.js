@@ -1,6 +1,4 @@
-import "./reset.css";
 import "./globals.css";
-import "./crosswordTable.css";
 import { dbConnect } from "@/lib/mongo";
 
 export const metadata = {

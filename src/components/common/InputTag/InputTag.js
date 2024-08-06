@@ -25,7 +25,9 @@ const InputTag = ({ setWords }) => {
 
   // Method to Add tag into Array
   const handleAddition = (tag) => {
-    setTags((prevTags) => [...prevTags, tag]);
+    if (tags.length < 15) {
+      setTags((prevTags) => [...prevTags, tag]);
+    }
   };
 
   return (

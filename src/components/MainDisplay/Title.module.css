@@ -40,7 +40,7 @@
   .wrapper {
       width: 100%;
       height: auto;
-      padding: 20px;
+      padding: 16px;
       box-sizing: border-box;
   }
 
@@ -57,29 +57,3 @@
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-      padding-top: 20px;
-      margin-bottom: 20px;
-  }
-
-  .wrapper {
-      width: 100%;
-      height: auto;
-      padding: 10px;
-      box-sizing: border-box;
-      
-  }
-
-  .heading {
-      font-size: 24px;
-      line-height: 32px;
-      margin-bottom: 15px;
-  }
-
-  .subHeading {
-      font-size: 16px;
-      line-height: 21px;
-      margin-bottom: 15px;
-  }
-}

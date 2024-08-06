@@ -7,6 +7,7 @@ import Link from "next/link";
 import Star from "@/assets/Star";
 import Dropdown from "../Dropdown/Dropdown";
 import BackButton from "../Buttons/BackButton";
+import Login from "@/assets/Login";
 
 export default function Header(props) {
   const [isAuthorizationVisible, setIsAuthorizationVisible] = useState(false);
@@ -30,10 +31,13 @@ export default function Header(props) {
             </div>
           ) : (
             <button
-              className={`${styles.headerButton} bodyL bodyLBold`}
+              className={`${styles.headerButton} bodyL bodyLBold btn btnAdditional`}
               onClick={() => setIsAuthorizationVisible(true)}
             >
-              Sign in
+              <span className={styles.signInText}>Sign in</span>
+              <span className={styles.headerButtonIcon}>
+                <Login />
+              </span>
             </button>
           )}
         </div>

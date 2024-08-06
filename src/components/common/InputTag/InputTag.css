@@ -1,7 +1,6 @@
 #tags {
     position: relative;
-    width: 626px;
-    border: 2px solid #272C25;
+    
     z-index: 2;
     background-color: white;
     border-radius: 6px;
@@ -11,22 +10,22 @@
     }
 
     
-
-    
     
     #tags .ReactTags__tags {
       position: relative;
       display: flex;
       align-items: center;
+      width: 100%;
     }
     
     #tags .ReactTags__selected {
-      margin-top: 12px;
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
       position: absolute;
       top: 54px;
       left: -8px;
+      width: 343px;
     }
     
     #tags .ReactTags__clearAll {
@@ -42,35 +41,31 @@
     .ReactTags__tagInput {
         background-color: none;
         position: relative;
-        width: 626px;
-        padding: 10px 12px 10px 12px  ;
-        z-index: 2;
+        border-radius: 6px;
+
       }
 
-      .ReactTags__tagInput::after{
-        content: ''; /* Добавляем пустое содержимое для псевдоэлемента */
-        position: absolute; /* Позиционируем псевдоэлемент абсолютно относительно родительского элемента */
-        top: 4px; /* Смещаем псевдоэлемент на 5 пикселей ниже основного input */
-        left:4px; /* Смещаем псевдоэлемент на 5 пикселей правее основного input */
-        border-radius: 6px; 
-        width: 626px;
-        height: 100% ;
-        border-right: 2px solid #272C25;
-        border-bottom: 2px solid #272C25;
-        z-index:1;
-      }
+    
     
       .ReactTags__tagInput input {
-        width: 100%;
+        border: 2px solid #272C25;
+        height: 60px;
         background-color: none;
         position: relative;
         z-index: 2;
+        width: 626px;
+        box-shadow: 4px 4px 0px -2px rgba(255, 255, 255, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
+        border-radius: 6px;
+        padding-left: 16px;
+
+      }
+      .ReactTags__tagInput input:focus{
+        box-shadow:4px 4px 0px 0px rgba(39, 44, 37, 1), 4px 4px 0px -2px rgba(39, 44, 37, 1);
       }
 
    
     
     #tags .ReactTags__tagInput input.ReactTags__tagInputField, #tags .ReactTags__tagInput input.ReactTags__tagInputField:focus {
-      height: 31px;
       margin: 0;
       min-width: 150px;
     }
@@ -85,18 +80,20 @@
     }
     
     #tags .ReactTags__selected span.ReactTags__tag {
-      border: 1px solid #ddd;
       background: rgba(236, 235, 235, 1);
       color: black;
       font-size: 16px;
       display: flex;
-      padding: 5px;
+      padding: 6px;
       margin: 6px;
       border-radius: 6px;
       font-family: 'Mulish Regular';
-      font-size: 14px;
       line-height: 150%;
   
+    }
+
+    #tags .ReactTags__selected span:first-child{
+      background-color:  rgba(255, 199, 0, 1);
     }
     
     #tags .ReactTags__selected a.ReactTags__remove {
@@ -137,11 +134,10 @@
       cursor: pointer;
       background: none;
       color: black;
-      padding-top: 3px;
+      padding-top: 5px;
     }
     
     #tags input {
-      border: none;
       outline: none;
     }
     
@@ -161,4 +157,12 @@
       font-family: 'Mulish Regular';
       font-size: 14px;
       line-height: 150%;
+  }
+
+
+  @media  (max-width: 768px) {
+    .ReactTags__tagInput input{
+      width: 343px;
+    }
+    
   }

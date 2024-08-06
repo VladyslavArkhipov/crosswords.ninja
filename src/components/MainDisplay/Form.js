@@ -1,6 +1,6 @@
 "use client";
 import { crossgen } from "../../utils/crossgen";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Form.module.css"; // Импортируйте CSS-модуль
 import { useRouter } from "next/navigation"; // Импортируем хук useRouter
 
@@ -12,17 +12,51 @@ export default function Form() {
   const router = useRouter(); // Создаем экземпляр роутера
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const style = {
-    marginTop: words.length > 80 ? "82px" : words.length > 40 ? "40px" : "",
+  const [marginTop, setMarginTop] = useState("");
+
+  const updateMarginTop = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 768) {
+      setMarginTop(
+        words.length > 95
+          ? "240px"
+          : words.length > 80
+          ? "190px"
+          : words.length > 65
+          ? "140px"
+          : words.length > 40
+          ? "92px"
+          : words.length > 15
+          ? "40px"
+          : ""
+      );
+    } else {
+      setMarginTop(
+        words.length > 80 ? "92px" : words.length > 40 ? "40px" : ""
+      );
+    }
   };
+
+  useEffect(() => {
+    updateMarginTop();
+    window.addEventListener("resize", updateMarginTop);
+    return () => {
+      window.removeEventListener("resize", updateMarginTop);
+    };
+  }, [words]);
+
   const wordsArray = words.split(" ");
 
   function closeModal() {
     setError(false);
   }
 
-  // Удаленные части кода для отправки запроса к ChatGPT
   async function handleClick() {
+    if (words.length === 0 || wordsArray.length < 3) {
+      setError(true);
+      setErrorMessage("You must insert at least 3 words!");
+      return;
+    }
     const [isCrosswordGeneratedSuccesfully, wordsDirection] = crossgen(
       1,
       words
@@ -33,21 +67,8 @@ export default function Form() {
       return;
     }
 
-    if (wordsArray.length > 15) {
-      setError(true);
-      setErrorMessage("You can insert only 15 words!");
-      return;
-    }
-
-    if (wordsArray.length < 3) {
-      setError(true);
-      setErrorMessage("You must insert at least 3 words!");
-      return;
-    }
-
     if (isCrosswordGeneratedSuccesfully) {
       try {
-        // Удаленный код, отправляющий запросы к ChatGPT
         const response = await fetch("/api/submitWords", {
           method: "POST",
           headers: {
@@ -58,10 +79,6 @@ export default function Form() {
 
         if (response.ok) {
           const data = await response.json();
-
-          // Обработка данных, если необходимо
-
-          // Перенаправление на страницу с кроссвордом
           const query = encodeURIComponent(JSON.stringify({ words }));
           router.push(`/generatedCrossword?data=${query}`);
         } else {
@@ -89,17 +106,13 @@ export default function Form() {
       <div className="crossgen">
         <div className="form">
           <div className={styles.words}>
-            <InputTag setWords={setWords} />{" "}
-            {/* <p className={`${styles.text} bodyS bodySMedium`}>
-              *The first word you insert becomes the main theme of your
-              crossword puzzle.
-            </p> */}
+            <InputTag setWords={setWords} />
           </div>
           <div className={styles.controls}>
             <button
               onClick={handleClick}
-              className={`${styles.button} bodyL bodyLBold`}
-              style={style}
+              className={`${styles.button} bodyL bodyLBold btn btnL btnPrimary`}
+              style={{ marginTop }}
             >
               Generate
             </button>

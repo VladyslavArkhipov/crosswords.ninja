@@ -23,67 +23,54 @@ text-align: center;
   }
   
   .headerButton{
-    position: relative;
     padding: 10px 30px;
-    border-radius: 6px ;
-    border: 2px solid #D5FF00;
-    background-color: rgba(39, 44, 37, 1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Mulish", sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    line-height: 27px;
-    color:  #D5FF00;
+    cursor: pointer;
+  }
+
+  .signInText{
+    display: block;
+  }
+
+  .headerButtonIcon{
+    display: none;
   }
   
-  .headerButton::after{
-    content: '';
-    width:  100%;
-    height:  100%;
-    position: absolute;
-    top: 3px; /* Смещение вниз */
-    left: 3px; /* Смещение вправо */
-    border-right: 2px solid #D5FF00;
-    border-bottom: 2px solid #D5FF00;
-    border-radius: 6px ;
-    z-index: 0; /* Под кнопкой */
-    
-  }
+
 
   /* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
   .headerWrapper {
-      flex-direction: column;
-      padding: 20px 40px;
+      padding: 21px 16px;
+  }
+
+  .signInText{
+    display: none;
+  }
+
+  .headerButtonIcon{
+    display: block;
   }
 
   .user_info_container_text {
       font-size: 16px;
       margin-left: 4px;
       margin-right: 16px;
+
   }
 
   .headerButton {
-      padding: 8px 20px;
-      font-size: 16px;
+    padding: 12px;
+      height: 48px;
+      width: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center
+  }
+
+  .headerButtonIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-@media (max-width: 480px) {
-  .headerWrapper {
-      padding: 15px 20px;
-  }
-
-  .user_info_container_text {
-      font-size: 14px;
-      margin-left: 2px;
-      margin-right: 10px;
-  }
-
-  .headerButton {
-      padding: 6px 15px;
-      font-size: 14px;
-  }
-}

@@ -1,0 +1,53 @@
+.btn{
+    border-radius: 6px;
+  }
+  .btnL{
+    width: 375px;
+    padding: 16px 135px;
+  }
+
+  .btnS{
+    width: 120px;
+    padding: 10px 31px;
+  }
+  
+  .btnPrimary{
+    color: rgba(39, 44, 37, 1);
+    border: 2px solid rgba(39, 44, 37, 1);
+    background-color: rgba(213, 255, 0, 1);
+    box-shadow: 4px 4px 0px 0px rgba(39, 44, 37, 1), 4px 4px 0px -2px rgba(39, 44, 37, 1) ;
+  }
+  
+  .btnPrimary:hover{
+    box-shadow:4px 4px 0px -2px rgba(213, 255, 0, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
+  }
+  
+  .btnPrimary:active{
+    box-shadow: 4px 4px 0px 0px rgba(39, 44, 37, 1), 4px 4px 0px -2px rgba(39, 44, 37, 1) ;
+  }
+  
+  .btnPrimary:disabled{
+    background-color: rgba(233, 234, 233, 1);
+    box-shadow: 4px 4px 0px 0px rgba(169, 171, 168, 1),4px 4px 0px -2px rgba(169, 171, 168, 1);
+  }
+  
+  .btnAdditional{
+    color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(213, 255, 0, 1);
+    background-color: rgba(39, 44, 37, 1);
+    box-shadow: 4px 4px 0px 0px rgba(213, 255, 0, 1),2px 2px 0px -2px rgba(213, 255, 0, 1),1px 1px 0px 0px rgba(213, 255, 0, 1),3px 3px 0px 0px rgba(213, 255, 0, 1);
+  }
+  
+  .btnAdditional:hover{
+    box-shadow: 4px 4px 0px -2px rgba(39, 44, 37, 1), 4px 4px 0px 0px rgba(213, 255, 0, 1);
+  }
+  
+  .btnAdditional:active{
+    box-shadow: 4px 4px 0px 0px rgba(198, 237, 0, 1),4px 4px 0px -2px rgba(198, 237, 0, 1);
+  }
+  
+  .btnAdditional:disabled{
+    background-color: rgba(190, 192, 190, 1);
+    box-shadow: 4px 4px 0px 0px rgba(104, 107, 102, 1),4px 4px 0px -2px rgba(104, 107, 102, 1);
+  }
+
