@@ -3,4 +3,14 @@
 @import url(../styles/fonts.css);
 @import url(../styles/buttons.css);
 
+@media  (max-width: 768px) {
+    body{
+        max-width: 768px;
+    }
+}
 
+@media  (max-width: 375px) {
+    body{
+        max-width: 375px;
+    }
+}
