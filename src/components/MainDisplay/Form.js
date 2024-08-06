@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"; // Импортируем хук us
 
 import InputTag from "../common/InputTag/InputTag";
 import ModalMessage from "../common/ModalMessage/ModalMessage";
+import Loading from "../common/Loading/Loading";
 
 export default function Form() {
   const [words, setWords] = useState("");
@@ -13,6 +14,7 @@ export default function Form() {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [marginTop, setMarginTop] = useState("");
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const updateMarginTop = () => {
     const screenWidth = window.innerWidth;
@@ -86,6 +88,7 @@ export default function Form() {
         });
 
         if (response.ok) {
+          setIsButtonClicked(true);
           const data = await response.json();
           const query = encodeURIComponent(JSON.stringify({ words }));
           router.push(`/generatedCrossword?data=${query}`);
@@ -100,6 +103,7 @@ export default function Form() {
 
   return (
     <div className="content">
+      {isButtonClicked && <Loading />}
       {error && (
         <ModalMessage
           messageType="error"
