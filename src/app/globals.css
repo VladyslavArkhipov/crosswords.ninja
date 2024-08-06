@@ -3,6 +3,10 @@
 @import url(../styles/fonts.css);
 @import url(../styles/buttons.css);
 
+body{
+    background: url(../assets/BG.svg);
+}
+
 @media  (max-width: 768px) {
     body{
         max-width: 768px;

@@ -25,7 +25,13 @@
       position: absolute;
       top: 54px;
       left: -8px;
-      width: 343px;
+    }
+
+    @media (max-width: 768px) {
+
+      #tags .ReactTags__selected{
+        width: 343px;
+      }
     }
     
     #tags .ReactTags__clearAll {

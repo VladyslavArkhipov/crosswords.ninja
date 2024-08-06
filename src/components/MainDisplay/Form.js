@@ -18,21 +18,29 @@ export default function Form() {
     const screenWidth = window.innerWidth;
     if (screenWidth <= 768) {
       setMarginTop(
-        words.length > 95
+        words.length > 90
+          ? "280px"
+          : words.length > 72
           ? "240px"
-          : words.length > 80
+          : words.length > 54
           ? "190px"
-          : words.length > 65
+          : words.length > 36
           ? "140px"
-          : words.length > 40
-          ? "92px"
-          : words.length > 15
+          : words.length > 18
+          ? "90px"
+          : words.length > 1
           ? "40px"
           : ""
       );
     } else {
       setMarginTop(
-        words.length > 80 ? "92px" : words.length > 40 ? "40px" : ""
+        words.length > 80
+          ? "140px"
+          : words.length > 40
+          ? "92px"
+          : words.length > 1
+          ? "40px"
+          : ""
       );
     }
   };
