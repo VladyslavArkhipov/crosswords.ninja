@@ -29,3 +29,10 @@
     font-size:10px
   }
   
+
+  @media screen and (max-width: 768px) {
+    table.cross td{
+      width: 15px;
+      height: 15px;
+    }
+  }

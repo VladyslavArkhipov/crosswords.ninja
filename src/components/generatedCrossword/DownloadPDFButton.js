@@ -79,8 +79,15 @@ export default function DownloadPDFButton(props) {
       });
   };
   return (
-    <button type="button" className={styles.button} onClick={downloadPDF}>
-      <Download />
+    <button
+      type="button"
+      className={`${styles.button} btn`}
+      onClick={downloadPDF}
+    >
+      <span className={styles.icon}>
+        <Download />
+      </span>
+      <span className={`${styles.text} bodyL bodyLBold`}>Download</span>
     </button>
   );
 }

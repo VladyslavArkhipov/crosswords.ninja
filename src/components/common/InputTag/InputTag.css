@@ -1,6 +1,5 @@
 #tags {
     position: relative;
-    
     z-index: 2;
     background-color: white;
     border-radius: 6px;
@@ -27,12 +26,7 @@
       left: -8px;
     }
 
-    @media (max-width: 768px) {
-
-      #tags .ReactTags__selected{
-        width: 343px;
-      }
-    }
+    
     
     #tags .ReactTags__clearAll {
       cursor: pointer;
@@ -51,6 +45,7 @@
 
       }
 
+
     
     
       .ReactTags__tagInput input {
@@ -63,6 +58,9 @@
         box-shadow: 4px 4px 0px -2px rgba(255, 255, 255, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
         border-radius: 6px;
         padding-left: 16px;
+        font-family: 'Mulish Regular';
+        line-height: 150%;
+        font-size: 16px;
 
       }
       .ReactTags__tagInput input:focus{
@@ -166,9 +164,19 @@
   }
 
 
-  @media  (max-width: 768px) {
+
+  @media (max-width: 768px) {
+    #tags{
+      width: 343px;
+    }
+    #tags .ReactTags__selected{
+      width: 343px;
+    }
+    #tags .ReactTags__tagInput{
+      width: 343px;
+    }   
     .ReactTags__tagInput input{
       width: 343px;
     }
-    
   }
+ 
