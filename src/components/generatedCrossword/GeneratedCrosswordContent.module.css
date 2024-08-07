@@ -81,6 +81,7 @@
     }
 
     .pdf_wrapper button{
+        width: 100%;
         padding: 12px 116px;
         display: flex;
         justify-content: center;
