@@ -15,14 +15,18 @@
 
 .info {
     background-color: rgba(213, 255, 0, 1);
+    color:  rgba(39, 44, 37, 1);
+    ;
 }
 
 .error {
     background-color: rgba(251, 213, 213, 1);
+    color:  rgba(119, 29, 29, 1);
 }
 
 .success {
     background-color: rgba(188, 240, 218, 1);
+    color:  rgba(1, 71, 55, 1);
 }
 
 .icon {

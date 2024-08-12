@@ -1,4 +1,5 @@
 .btn{
+  cursor: pointer;
     border-radius: 6px;
   }
   .btnL{
@@ -23,6 +24,7 @@
   }
   
   .btnPrimary:active{
+    background: rgba(198, 237, 0, 1);
     box-shadow: 4px 4px 0px 0px rgba(39, 44, 37, 1), 4px 4px 0px -2px rgba(39, 44, 37, 1) ;
   }
   
@@ -54,6 +56,21 @@
   .btnMobile{
     width:  343px;
     padding: 16px 135px;
+  }
+
+  .btnSecondary{
+    color: rgba(39, 44, 37, 1);
+    border: 2px solid rgba(39, 44, 37, 1);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 4px 4px 0px 0px rgba(39, 44, 37, 1),4px 4px 0px -2px rgba(39, 44, 37, 1);
+  }
+
+  .btnSecondary:hover{
+    box-shadow: 4px 4px 0px -2px rgba(255, 255, 255, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
+  }
+
+  .btnSecondary:active{
+    box-shadow: 4px 4px 0px 0px rgba(39, 44, 37, 1),4px 4px 0px -2px rgba(39, 44, 37, 1);;
   }
 
   @media screen and (max-width: 768px) {

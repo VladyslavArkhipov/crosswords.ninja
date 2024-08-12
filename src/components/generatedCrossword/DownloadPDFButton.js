@@ -4,6 +4,7 @@ import jsPDF from "jspdf";
 import styles from "./GeneratedCrosswordContent.module.css";
 
 export default function DownloadPDFButton(props) {
+  const isMobile = window.innerWidth <= 768;
   const downloadPDF = () => {
     props.setIsButtonClicked(true);
     const input = props.wrapperRef.current;
@@ -25,22 +26,31 @@ export default function DownloadPDFButton(props) {
 
     //изменения размера ячеек кроссворда
     const cells = input.querySelectorAll(".cell");
-    cells.forEach((cell, index) => {
-      cell.style.width = `44px`;
-      cell.style.height = `44px`;
-    });
+    if (isMobile) {
+      cells.forEach((cell, index) => {
+        cell.style.width = `30px`;
+        cell.style.height = `30px`;
+      });
+    } else {
+      cells.forEach((cell, index) => {
+        cell.style.width = `44px`;
+        cell.style.height = `44px`;
+      });
+    }
 
     // Применить стили для печати
-    input.style.padding = "100px";
+    if (!isMobile) input.style.padding = "100px";
 
     // Увеличить размер шрифта всех элементов внутри wrapper в 2 раза
     const originalFontSizes = [];
     const elements = input.querySelectorAll("p, h2, td");
-    elements.forEach((element, index) => {
-      const style = window.getComputedStyle(element);
-      originalFontSizes[index] = style.fontSize;
-      element.style.fontSize = `calc(${style.fontSize} * 2)`;
-    });
+    if (!isMobile) {
+      elements.forEach((element, index) => {
+        const style = window.getComputedStyle(element);
+        originalFontSizes[index] = style.fontSize;
+        element.style.fontSize = `calc(${style.fontSize} * 2)`;
+      });
+    }
 
     html2canvas(input)
       .then((canvas) => {

@@ -96,7 +96,7 @@
   
     }
 
-    #tags .ReactTags__selected span:first-child{
+    #tags .ReactTags__selected span:hover{
       background-color:  rgba(255, 199, 0, 1);
     }
     

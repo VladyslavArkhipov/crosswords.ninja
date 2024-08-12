@@ -1,5 +1,6 @@
 import RegistrationForm from "./RegistrationForm";
 import styles from "./Authorization.module.css"; // Импортируйте CSS-модуль
+import Close from "@/assets/Close";
 
 export default function Registration({ setIsRegistrationVisible }) {
   const handleClick = () => {
@@ -7,12 +8,18 @@ export default function Registration({ setIsRegistrationVisible }) {
   };
   return (
     <>
-      <h1 className={styles.modalHeader}>Registration</h1>
+      <h2 className={styles.modalHeader}>Sign Up</h2>
+      <p className={`${styles.subheading} bodyL bodyLRegular`}>
+        To unlock all the features please Sign In
+      </p>
       <RegistrationForm />
-      <p className={styles.modalText}>
+      <p className={`${styles.modalText} bodyM bodyMRegular`}>
         Already have an account?
-        <button onClick={handleClick} className={styles.link_button}>
-          Sign in
+        <button
+          onClick={handleClick}
+          className={`${styles.linkButton} bodyM bodyMRegular`}
+        >
+          Sign in.
         </button>
       </p>
     </>

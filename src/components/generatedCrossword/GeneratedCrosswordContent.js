@@ -33,7 +33,7 @@ export default function GeneratedCrosswordContent(props) {
           </div>
           <Questions words={words} />
           {!isButtonClicked ? (
-            <div className={styles.pdf_wrapper} ref={buttonRef}>
+            <div className={styles.pdfButtonWrapper} ref={buttonRef}>
               <DownloadPDFButton
                 setIsButtonClicked={setIsButtonClicked}
                 wrapperRef={wrapperRef}

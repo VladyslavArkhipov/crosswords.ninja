@@ -7,16 +7,23 @@ export default function Download() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#clip0_922_822)">
+      <g clipPath="url(#clip0_1199_31489)">
         <path
-          d="M5.25 9.25L11.999 16L18.749 9.25H14.999V2.5C14.999 2.30109 14.92 2.11032 14.7793 1.96967C14.6387 1.82902 14.4479 1.75 14.249 1.75H9.749C9.55009 1.75 9.35932 1.82902 9.21867 1.96967C9.07802 2.11032 8.999 2.30109 8.999 2.5V9.25H5.25Z"
+          d="M4 17V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V17"
           stroke="#272C25"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
-          d="M23.25 17.5V20.5C23.25 20.8978 23.092 21.2794 22.8107 21.5607C22.5294 21.842 22.1478 22 21.75 22H2.25C1.85218 22 1.47064 21.842 1.18934 21.5607C0.908035 21.2794 0.75 20.8978 0.75 20.5V17.5"
+          d="M7 11L12 16L17 11"
+          stroke="#272C25"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 4V16"
           stroke="#272C25"
           strokeWidth="2"
           strokeLinecap="round"
@@ -24,7 +31,7 @@ export default function Download() {
         />
       </g>
       <defs>
-        <clipPath id="clip0_922_822">
+        <clipPath id="clip0_1199_31489">
           <rect width="24" height="24" fill="white" />
         </clipPath>
       </defs>

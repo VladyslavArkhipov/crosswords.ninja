@@ -66,25 +66,29 @@ export default function Questions(props) {
       )}
       <div className={styles.questions}>
         <div className={styles.questions_header}>
-          <h2>Across</h2>
+          <h2 className="bodyL bodyLSemiBold">Across</h2>
           <ArrowRight />
         </div>
-        {horizontalArray.map((question, index) => (
-          <p className={styles.question} key={index}>
-            {question}
-          </p>
-        ))}
+        <ul>
+          {horizontalArray.map((question, index) => (
+            <li className={`${styles.question} bodyS bodySRegular`} key={index}>
+              {question}
+            </li>
+          ))}
+        </ul>
       </div>
       <div className={styles.questions}>
         <div className={styles.questions_header}>
           <h2>Down</h2>
           <ArrowDown />
         </div>
-        {verticalArray.map((question, index) => (
-          <p className={styles.question} key={index}>
-            {question}
-          </p>
-        ))}
+        <ul>
+          {verticalArray.map((question, index) => (
+            <li className={`${styles.question} bodyS bodySRegular`} key={index}>
+              {question}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

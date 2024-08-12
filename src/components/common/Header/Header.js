@@ -34,7 +34,9 @@ export default function Header(props) {
               className={`${styles.headerButton} bodyL bodyLBold btn btnAdditional`}
               onClick={() => setIsAuthorizationVisible(true)}
             >
-              <span className={styles.signInText}>Sign in</span>
+              <span className={`${styles.signInText} bodyL bodyLBold`}>
+                Sign in
+              </span>
               <span className={styles.headerButtonIcon}>
                 <Login />
               </span>

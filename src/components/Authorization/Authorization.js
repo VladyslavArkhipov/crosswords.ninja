@@ -3,6 +3,7 @@ import Link from "next/link";
 import LoginForm from "@/components/Authorization/LoginForm";
 import styles from "./Authorization.module.css"; // Импортируйте CSS-модуль
 import Registration from "./Registration";
+import Close from "@/assets/Close";
 
 const Authorization = ({ setIsAuthorizationVisible }) => {
   const modalRef = useRef(null);
@@ -14,6 +15,10 @@ const Authorization = ({ setIsAuthorizationVisible }) => {
       setIsAuthorizationVisible(false);
       setIsRegistrationVisible(true);
     }
+  };
+
+  const handleClick = () => {
+    setIsAuthorizationVisible(false);
   };
 
   const handleClickRegistration = () => {
@@ -33,18 +38,18 @@ const Authorization = ({ setIsAuthorizationVisible }) => {
         {!isRegistrationVisible && (
           <>
             <h2 className={styles.modalHeader}>Sign In</h2>
-            <p className="bodyL bodyLRegular">
+            <p className={`${styles.subheading} bodyL bodyLRegular`}>
               To unlock all the features please Sign In
             </p>
             <LoginForm />
 
-            <p className={styles.modalText}>
+            <p className={`${styles.modalText} bodyM bodyMRegular`}>
               Don't you have an account?
               <button
                 onClick={handleClickRegistration}
-                className={styles.link_button}
+                className={`${styles.linkButton} bodyM bodyMRegular`}
               >
-                Register
+                Sign up.
               </button>
             </p>
           </>
@@ -54,6 +59,9 @@ const Authorization = ({ setIsAuthorizationVisible }) => {
             setIsRegistrationVisible={setIsRegistrationVisible}
           ></Registration>
         )}
+        <button onClick={handleClick} className={styles.closeModal}>
+          <Close />
+        </button>
       </div>
     </div>
   );

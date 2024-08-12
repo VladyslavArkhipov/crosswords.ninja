@@ -75,10 +75,12 @@ const RegistrationForm = () => {
         </div>
       )}
 
+      <SocialLogins />
+      <p className={`${styles.modalText} bodyM bodyMRegular`}>or</p>
       <form ref={formRef} onSubmit={handleSubmit}>
         <div className="my-2">
           <input
-            className={styles.loginInput}
+            className={`${styles.loginInput} bodyM bodyMRegular`}
             type="email"
             name="email"
             id="email"
@@ -86,9 +88,9 @@ const RegistrationForm = () => {
           />
         </div>
 
-        <div className={styles.password_registration_container}>
+        <div className={styles.passwordInputContainer}>
           <input
-            className={styles.loginInput}
+            className={`${styles.loginInput} bodyM bodyMRegular`}
             type={showPassword ? "text" : "password"}
             name="password"
             id="password"
@@ -97,17 +99,19 @@ const RegistrationForm = () => {
           <button
             type="button"
             onClick={toggleShowPassword}
-            className={styles.show_password_button}
+            className={styles.showPasswordButton}
           >
             {showPassword ? <HidePass /> : <ShowPass />}
           </button>
         </div>
 
-        <button type="submit" className={styles.submit_button}>
+        <button
+          type="submit"
+          className={`${styles.submitButton} btn btnL btnPrimary bodyL bodyLBold`}
+        >
           {isLoading ? "Loading..." : "Continue"}
         </button>
       </form>
-      <SocialLogins />
     </>
   );
 };

@@ -6,17 +6,6 @@ import InfoIcon from "@/assets/InfoIcon";
 import ErrorIcon from "@/assets/ErrorIcon";
 
 export default function ModalMessage(props) {
-  const messages = {
-    successfullDownloadedFileMessage:
-      "You have successfully downloaded the file!",
-    freeAccountMessage:
-      "To unlock all the features please Sign-In and pop-up your credits  ",
-    successfullSignInMessage:
-      "Welcome back! You're now signed in and ready to explore.",
-    successfullSignUpMessage:
-      "You're successfully signed up and ready to explore.",
-  };
-
   function closeModal() {
     props.closeModal();
   }
@@ -51,7 +40,7 @@ export default function ModalMessage(props) {
         )}
         <p className={`${styles.text} bodyM bodyMSemiBold`}>{props.message}</p>
         <button className={styles.close} onClick={closeModal}>
-          <Close />
+          <Close messageType={props.messageType} />
         </button>
       </div>
     </div>

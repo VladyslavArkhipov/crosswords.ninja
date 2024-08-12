@@ -5,15 +5,13 @@ const SocialLogins = () => {
   return (
     <form action={doSocialLogin}>
       <button
-        className={styles.googleButton}
+        className={`${styles.googleButton} btn btnL btnSecondary bodyL bodyLBold`}
         type="submit"
         name="action"
         value="google"
       >
-        <div className={styles.googleImage}>
-          <Google />
-        </div>
-        Continue with Google
+        <Google />
+        <span className={styles.googleButtonText}>Continue with Google</span>
       </button>
     </form>
   );
