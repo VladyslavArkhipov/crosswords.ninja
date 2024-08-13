@@ -10,7 +10,7 @@ export default function Registration({ setIsRegistrationVisible }) {
     <>
       <h2 className={styles.modalHeader}>Sign Up</h2>
       <p className={`${styles.subheading} bodyL bodyLRegular`}>
-        To unlock all the features please Sign In
+        To unlock all the features please sign in.
       </p>
       <RegistrationForm />
       <p className={`${styles.modalText} bodyM bodyMRegular`}>

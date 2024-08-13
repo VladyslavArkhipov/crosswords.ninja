@@ -4,8 +4,8 @@ import styles from "./Authorization.module.css"; // Импортируйте CSS
 const Logout = () => {
   return (
     <form action={doLogout}>
-      <button className={styles.logout} type="submit">
-        Logout
+      <button className={`${styles.logout} bodyL bodyLBold`} type="submit">
+        Log out
       </button>
     </form>
   );

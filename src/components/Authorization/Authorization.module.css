@@ -45,7 +45,7 @@
 }
 
 .loginInput{
-  width:  372px;
+  width:  375px;
   height: 56px;
   padding: 16px;
   border-radius: 6px ;
@@ -162,4 +162,21 @@
   top: 8px;
   left: calc(100% - 40px);
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .modalContainer{
+    width: 344px;
+      padding: 24px 16px;
+      margin: 0 16px;
+  }
+  
+  .googleButton, .loginInput, .submitButton{
+    width: 295px;
+  }
+
+  .logout{
+    color:  rgba(213, 255, 0, 1);
+
+  }
 }

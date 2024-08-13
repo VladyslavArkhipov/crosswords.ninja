@@ -1,19 +1,23 @@
 .headerWrapper{
+  width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(39, 44, 37, 1);
-    padding: 22px 83px;
+    padding: 0 83px;
+    height: 90px;
   }
+
   
-  .user_info_container{
+  
+  .userInfoContainer, .userInfoWrapper{
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .user_info_container_text{
-text-align: center;
+  .userInfoContainerText{
+    text-align: center;
     margin-left: 6px;
     margin-right: 32px;
     color: rgba(255, 255, 255, 1);
@@ -40,6 +44,10 @@ text-align: center;
       padding: 21px 16px;
   }
 
+  .logoContainer{
+    margin-right: 109px;
+  }
+
   .signInText{
     display: none;
   }
@@ -48,11 +56,8 @@ text-align: center;
     display: block;
   }
 
-  .user_info_container_text {
-      font-size: 16px;
-      margin-left: 4px;
-      margin-right: 16px;
-
+  .userInfoContainer {
+      display: none;
   }
 
   .headerButton {
@@ -71,3 +76,8 @@ text-align: center;
   }
 }
 
+@media screen and (max-width: 1024px){
+  .userInfoContainer {
+    display: none;
+}
+}

@@ -4,7 +4,7 @@
   }
   .btnL{
     width: 375px;
-    padding: 16px 135px;
+    height: 56px;
   }
 
   .btnS{
@@ -55,7 +55,12 @@
 
   .btnMobile{
     width:  343px;
-    padding: 16px 135px;
+    padding: 16px 0;
+    background-color: rgba(213, 255, 0, 1);
+    box-shadow: 4px 4px 0px -2px rgba(39, 44, 37, 1), 4px 4px 0px 0px rgba(213, 255, 0, 1);
+    height: 48px;
+
+
   }
 
   .btnSecondary{
@@ -72,6 +77,8 @@
   .btnSecondary:active{
     box-shadow: 4px 4px 0px 0px rgba(39, 44, 37, 1),4px 4px 0px -2px rgba(39, 44, 37, 1);;
   }
+
+  
 
   @media screen and (max-width: 768px) {
     .btn{
