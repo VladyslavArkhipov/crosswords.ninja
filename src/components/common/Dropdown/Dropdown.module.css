@@ -98,7 +98,9 @@
   }
 
   .logoutButtonMobile{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
     width: 343px;
     height: 48px;
@@ -114,6 +116,10 @@
 
     .dropdownItem{
       margin: 8px 0;
+    }
+
+    .dropdownItem:hover, .dropdownItem:hover .creditsLink, .dropdownItem:hover button, .dropdownItem:hover svg{
+      background: none;
     }
 
     .dropdownItem svg{

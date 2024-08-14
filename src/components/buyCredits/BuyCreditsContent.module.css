@@ -101,14 +101,16 @@
 
 
   }
+
+
   
   
 
   .buttons{
     width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 12px;
   }
 
 .button{
@@ -166,7 +168,7 @@
     gap: 16px;
   }
 
-  .generationsWrapper{
+  .generationsWrapper, .price{
     font-size: 14px;
   }
 
@@ -174,5 +176,7 @@
     width: 296px;
     height: 52px;
   }
+
+ 
 }
   

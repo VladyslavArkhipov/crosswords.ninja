@@ -48,7 +48,7 @@ const GenerationSelector = (props) => {
                 </div>
               )}
             </div>
-            <div>{option.price}$</div>
+            <div className={styles.price}>{option.price}$</div>
           </div>
         </label>
       ))}
