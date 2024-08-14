@@ -1,4 +1,5 @@
 import CryptoJS from "crypto-js";
+import styles from "./BuyCreditsContent.module.css";
 
 export default function PaymentButton(props) {
   const merchantAccount = "crosswords_ninja_vercel_app";
@@ -45,7 +46,11 @@ export default function PaymentButton(props) {
           name="merchantSignature"
           value={tryMerchantSignature}
         />
-        <input type="submit" value="Test" />
+        <input
+          className={`${styles.button} ${styles.buy} bodyL bodyLBold`}
+          type="submit"
+          value="Buy generations"
+        />
       </form>
     </>
   );

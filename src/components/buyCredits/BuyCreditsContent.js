@@ -5,6 +5,7 @@ import styles from "./BuyCreditsContent.module.css";
 import GenerationSelector from "./GenerationSelector";
 import PaymentButton from "./PaymentButton ";
 import { useState } from "react";
+import Close from "@/assets/Close";
 
 export default function BuyCreditsContent(props) {
   const [choosedGenerations, setChoosedGenerations] = useState({
@@ -17,21 +18,34 @@ export default function BuyCreditsContent(props) {
       <div className={styles.modalBackground}>
         <div className={styles.container}>
           <h2 className={styles.heading}>Credits Required</h2>
-          <p className={styles.subheading}>
+          <p className={`${styles.subheading} bodyL bodyLRegular`}>
             To proceed with crossword generation, credits are required. Please
             purchase generations to continue.
           </p>
           <GenerationSelector setChoosedGenerations={setChoosedGenerations} />
-          <p className={styles.hidden_text}>
+          <p className={`${styles.hidden_text} bodyS bodySRegular`}>
             Select your preferred amount to proceed with the purchase.
           </p>
-          <p className={styles.special_info}>
-            * A percentage of top-ups will go to the Armed Forces of Ukraine.
+          <p className={`${styles.special_info} bodyS bodySMedium`}>
+            *A percentage of top-ups will go to the Armed Forces of Ukraine.
           </p>
-          <div>
-            <Link href="/">Cancel</Link>
-            <PaymentButton choosedGenerations={choosedGenerations} />
+          <div className={styles.buttons}>
+            <Link
+              href="/"
+              className={`${styles.button} ${styles.cancel} bodyL bodyLBold`}
+            >
+              Cancel
+            </Link>
+            <PaymentButton
+              className={styles.button}
+              choosedGenerations={choosedGenerations}
+            />
           </div>
+          <button className={styles.closeModal}>
+            <Link href="/">
+              <Close color="black" />
+            </Link>
+          </button>
         </div>
       </div>
     </>

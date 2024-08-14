@@ -10,6 +10,8 @@ export default function Close(props) {
       setColor("rgba(119, 29, 29, 1)");
     } else if (props.messageType === "success") {
       setColor("rgba(1, 71, 55, 1)");
+    } else if (props.color === "black") {
+      setColor("rgba(39, 44, 37, 1)");
     } else {
       setColor("rgba(255, 255, 255, 1)");
     }

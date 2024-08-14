@@ -60,7 +60,7 @@ const Authorization = ({ setIsAuthorizationVisible }) => {
           ></Registration>
         )}
         <button onClick={handleClick} className={styles.closeModal}>
-          <Close />
+          <Close color="black" />
         </button>
       </div>
     </div>

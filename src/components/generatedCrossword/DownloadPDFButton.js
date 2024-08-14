@@ -1,10 +1,16 @@
+"use client";
 import Download from "@/assets/Download";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import styles from "./GeneratedCrosswordContent.module.css";
+import React, { useState, useEffect } from "react";
 
 export default function DownloadPDFButton(props) {
-  const isMobile = window.innerWidth <= 768;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
   const downloadPDF = () => {
     props.setIsButtonClicked(true);
     const input = props.wrapperRef.current;
