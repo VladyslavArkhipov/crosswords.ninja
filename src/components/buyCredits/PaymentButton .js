@@ -17,7 +17,6 @@ export default function PaymentButton(props) {
   const trySecretKey = "7862ddd38cb6b88428bf1f8cc1c828f1e415a8f1";
   const tryHmac = CryptoJS.HmacMD5(tryString, trySecretKey);
   const tryMerchantSignature = tryHmac.toString(CryptoJS.enc.Hex);
-  console.log(props);
   return (
     <>
       <form method="post" action="https://secure.wayforpay.com/pay">

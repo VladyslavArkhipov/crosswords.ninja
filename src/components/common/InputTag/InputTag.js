@@ -42,6 +42,7 @@ const InputTag = ({ setWords }) => {
           autocomplete
           allowDragDrop={false}
           placeholder="Insert words to generate crossword (max. 15)"
+          autofocus={false}
         />
       </div>
     </div>
