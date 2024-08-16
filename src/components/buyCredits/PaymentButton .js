@@ -45,6 +45,7 @@ export default function PaymentButton(props) {
         <input type="hidden" name="productPrice[]" value="1" />
         <input type="hidden" name="productCount[]" value="1" />
         <input type="hidden" name="defaultPaymentSystem" value="card" />
+        <input type="hidden" name="clientEmail" value={props.user.email} />
         <input
           type="hidden"
           name="merchantSignature"

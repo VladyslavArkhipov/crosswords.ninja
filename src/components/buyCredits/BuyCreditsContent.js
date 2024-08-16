@@ -39,6 +39,7 @@ export default function BuyCreditsContent(props) {
             <PaymentButton
               className={styles.button}
               choosedGenerations={choosedGenerations}
+              user={props.user}
             />
           </div>
           <button className={styles.closeModal}>

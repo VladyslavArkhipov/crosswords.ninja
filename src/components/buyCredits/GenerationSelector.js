@@ -9,8 +9,8 @@ const GenerationSelector = (props) => {
 
   const options = [
     { generations: 5, price: 0.1 },
-    { generations: 10, price: 0.1 },
-    { generations: 15, price: 0.1 },
+    { generations: 10, price: 0.2 },
+    { generations: 15, price: 0.3 },
   ];
 
   return (

@@ -1,49 +1,75 @@
 import { NextResponse } from "next/server";
+import { User } from "@/model/user-model";
+import { dbConnect } from "@/lib/mongo";
+
+// Сопоставление суммы платежа с количеством generations
+const amountToGenerations = (amount) => {
+  if (amount === 0.1) return 5;
+  if (amount === 0.2) return 10;
+  if (amount === 0.3) return 15;
+  return 0; // Значение по умолчанию, если сумма не соответствует ни одному из условий
+};
 
 export async function POST(req) {
   try {
-    // Поскольку форма отправляется в формате application/x-www-form-urlencoded, используйте req.formData()
-    const formData = await req.formData();
+    // Подключение к базе данных
+    await dbConnect();
 
     // Получаем данные из формы
+    const formData = await req.formData();
     const transactionStatus = formData.get("transactionStatus");
-    const amount = formData.get("amount");
+    const amount = parseFloat(formData.get("amount")); // Преобразуем в число
     const orderReference = formData.get("orderReference");
+    const clientEmail = formData.get("clientEmail");
 
-    // Проверяем статус транзакции
-    if (!transactionStatus || !orderReference) {
+    if (!transactionStatus || !orderReference || !clientEmail) {
       return NextResponse.json(
         { message: "Invalid request: missing required fields" },
         { status: 400 }
       );
     }
 
-    // Логика обработки успешного платежа
     if (transactionStatus === "Approved") {
-      // Обновляем статус заказа в базе данных или выполняем другую логику
-      console.log(`Order ${orderReference} approved with amount: ${amount}`);
+      // Получаем количество generations в зависимости от суммы
+      const generationsToAdd = amountToGenerations(amount);
 
-      // Возвращаем ответ об успешной обработке
-      return NextResponse.json(
-        {
-          message: "Payment approved",
-          amount: amount,
-          orderReference: orderReference,
-        },
-        { status: 200 }
-      );
+      if (generationsToAdd > 0) {
+        // Обновляем поле generations у пользователя
+        const updatedUser = await User.findOneAndUpdate(
+          { email: clientEmail },
+          { $inc: { generations: generationsToAdd } },
+          { new: true } // Возвращаем обновленный документ
+        );
+
+        if (updatedUser) {
+          console.log(
+            `User ${clientEmail} updated with ${generationsToAdd} generations`
+          );
+          return NextResponse.json(
+            { message: "Payment approved and user updated", user: updatedUser },
+            { status: 200 }
+          );
+        } else {
+          return NextResponse.json(
+            { message: "User not found" },
+            { status: 404 }
+          );
+        }
+      } else {
+        return NextResponse.json(
+          { message: "Invalid amount for generations" },
+          { status: 400 }
+        );
+      }
     } else {
       // Логика обработки неуспешного или ожидающего платежа
       console.log(`Order ${orderReference} failed or pending`);
-
-      // Возвращаем ответ о неуспешной обработке
       return NextResponse.json(
         { message: "Payment failed or pending" },
         { status: 400 }
       );
     }
   } catch (error) {
-    // Ловим ошибки и возвращаем статус 500
     console.error("Error processing payment callback:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
@@ -53,6 +79,5 @@ export async function POST(req) {
 }
 
 export async function GET() {
-  // Метод не разрешен для GET-запросов
   return NextResponse.json({ message: "Method not allowed" }, { status: 405 });
 }
