@@ -2,8 +2,13 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    // Получаем данные из тела запроса
-    const { transactionStatus, amount, orderReference } = await req.json();
+    // Поскольку форма отправляется в формате application/x-www-form-urlencoded, используйте req.formData()
+    const formData = await req.formData();
+
+    // Получаем данные из формы
+    const transactionStatus = formData.get("transactionStatus");
+    const amount = formData.get("amount");
+    const orderReference = formData.get("orderReference");
 
     // Проверяем статус транзакции
     if (!transactionStatus || !orderReference) {
