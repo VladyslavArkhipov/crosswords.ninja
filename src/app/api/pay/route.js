@@ -28,9 +28,9 @@ export async function POST(req) {
     const transactionStatus = formData.get("transactionStatus");
     const amount = parseFloat(formData.get("amount")); // Преобразуем в число
     const orderReference = formData.get("orderReference");
-    const clientEmail = formData.get("clientEmail");
+    const email = formData.get("email");
 
-    if (!transactionStatus || !orderReference || !clientEmail) {
+    if (!transactionStatus || !orderReference || !email) {
       return NextResponse.json(
         {
           message: "Invalid request: missing required fields",
@@ -47,14 +47,14 @@ export async function POST(req) {
       if (generationsToAdd > 0) {
         // Обновляем поле generations у пользователя
         const updatedUser = await User.findOneAndUpdate(
-          { email: clientEmail },
+          { email: email },
           { $inc: { generations: generationsToAdd } },
           { new: true } // Возвращаем обновленный документ
         );
 
         if (updatedUser) {
           console.log(
-            `User ${clientEmail} updated with ${generationsToAdd} generations`
+            `User ${email} updated with ${generationsToAdd} generations`
           );
           return NextResponse.json(
             { message: "Payment approved and user updated", user: updatedUser },
