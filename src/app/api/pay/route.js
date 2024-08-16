@@ -24,7 +24,10 @@ export async function POST(req) {
 
     if (!transactionStatus || !orderReference || !clientEmail) {
       return NextResponse.json(
-        { message: "Invalid request: missing required fields" },
+        {
+          message: "Invalid request: missing required fields",
+          formData: formData,
+        },
         { status: 400 }
       );
     }
