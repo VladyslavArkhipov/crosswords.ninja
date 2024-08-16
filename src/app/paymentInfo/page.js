@@ -1,14 +1,14 @@
-import MainDisplay from "../components/MainDisplay/MainDisplay";
 import { auth } from "@/utils/auth";
 import { User } from "@/model/user-model";
+import PaymentInfoDisplay from "@/components/PaymentInfo/PaymentInfoDisplay";
 
-export default async function Home() {
+export default async function PaymentInfo() {
   const session = await auth();
   const user = await User.findOne({ email: session?.user.email });
 
   return (
     <>
-      <MainDisplay user={user}></MainDisplay>
+      <PaymentInfoDisplay user={user} />
     </>
   );
 }

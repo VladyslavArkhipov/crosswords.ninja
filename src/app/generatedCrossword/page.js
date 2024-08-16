@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "@/utils/auth";
 import GeneratedCrosswordContent from "@/components/generatedCrossword/GeneratedCrosswordContent";
 import { User } from "@/model/user-model";
 

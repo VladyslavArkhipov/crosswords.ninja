@@ -8,9 +8,9 @@ const GenerationSelector = (props) => {
   const [selectedOption, setSelectedOption] = useState(10);
 
   const options = [
-    { generations: 5, price: 2 },
-    { generations: 10, price: 3 },
-    { generations: 15, price: 4 },
+    { generations: 5, price: 0.01 },
+    { generations: 10, price: 0.01 },
+    { generations: 15, price: 0.01 },
   ];
 
   return (

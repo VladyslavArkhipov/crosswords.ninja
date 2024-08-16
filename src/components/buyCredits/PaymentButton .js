@@ -22,6 +22,11 @@ export default function PaymentButton(props) {
       <form method="post" action="https://secure.wayforpay.com/pay">
         <input
           type="hidden"
+          name="returnUrl"
+          value="https://localhost:3000/paymentInfo"
+        />
+        <input
+          type="hidden"
           name="merchantAccount"
           value="crosswords_ninja_vercel_app"
         />

@@ -16,7 +16,9 @@ export default function Header(props) {
     <header>
       <div className={styles.headerWrapper}>
         <div className={styles.logoContainer}>
-          {!props.isCrosswordGenerated ? <Logo /> : <BackButton />}
+          <Link href="/">
+            {!props.isCrosswordGenerated ? <Logo /> : <BackButton />}
+          </Link>
         </div>
         <div className={styles.userInfoWrapper}>
           {props.user ? (
