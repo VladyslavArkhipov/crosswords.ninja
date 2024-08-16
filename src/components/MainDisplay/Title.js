@@ -2,7 +2,7 @@ import styles from "./Title.module.css"; // Импортируйте CSS-мод�
 
 import Form from "./Form";
 
-export default function Title() {
+export default function Title(props) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -15,7 +15,7 @@ export default function Title() {
             and get crossword with clues.
           </h2>
         </>
-        <Form></Form>
+        <Form user={props.user}></Form>
       </div>
     </div>
   );

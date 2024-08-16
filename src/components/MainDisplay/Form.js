@@ -8,7 +8,7 @@ import InputTag from "../common/InputTag/InputTag";
 import ModalMessage from "../common/ModalMessage/ModalMessage";
 import Loading from "../common/Loading/Loading";
 
-export default function Form() {
+export default function Form(props) {
   const [words, setWords] = useState("");
   const router = useRouter(); // Создаем экземпляр роутера
   const [error, setError] = useState(false);

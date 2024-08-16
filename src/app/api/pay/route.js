@@ -57,7 +57,11 @@ export async function POST(req) {
             `User ${email} updated with ${generationsToAdd} generations`
           );
           return NextResponse.json(
-            { message: "Payment approved and user updated", user: updatedUser },
+            {
+              message: "Payment approved and user updated",
+              user: updatedUser,
+              redirectUrl: "/", // URL для перенаправления
+            },
             { status: 200 }
           );
         } else {

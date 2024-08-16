@@ -7,7 +7,7 @@ export default function MainDisplay(props) {
   return (
     <div className={styles.mainDisplay}>
       <Header user={props.user} />
-      <Title />
+      <Title user={props.user} />
       <Footer />
     </div>
   );
