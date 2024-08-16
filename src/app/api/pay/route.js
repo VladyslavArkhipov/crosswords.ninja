@@ -60,7 +60,7 @@ export async function POST(req) {
             {
               message: "Payment approved and user updated",
               user: updatedUser,
-              redirectUrl: "/", // URL для перенаправления
+              redirectUrl: "https://crosswords-ninja.vercel.app/", // URL для перенаправления
             },
             { status: 200 }
           );
