@@ -31,10 +31,12 @@ export async function POST(req) {
     const email = formData.get("email");
 
     if (!transactionStatus || !orderReference || !email) {
-      return NextResponse.redirect(
-        `/error?message=Invalid request: missing required fields&formData=${encodeURIComponent(
-          JSON.stringify(formDataObj)
-        )}`
+      return NextResponse.json(
+        {
+          message: "Invalid request: missing required fields",
+          formData: formDataObj,
+        },
+        { status: 400 }
       );
     }
 
@@ -54,25 +56,36 @@ export async function POST(req) {
           console.log(
             `User ${email} updated with ${generationsToAdd} generations`
           );
-          return NextResponse.redirect(`/`);
+          return NextResponse.json(
+            { message: "Payment approved and user updated", user: updatedUser },
+            { status: 200 }
+          );
         } else {
-          return NextResponse.redirect(`/error?message=User not found`);
+          return NextResponse.json(
+            { message: "User not found" },
+            { status: 404 }
+          );
         }
       } else {
-        return NextResponse.redirect(`/`);
+        return NextResponse.json(
+          { message: "Invalid amount for generations" },
+          { status: 400 }
+        );
       }
     } else {
       // Логика обработки неуспешного или ожидающего платежа
       console.log(`Order ${orderReference} failed or pending`);
-      return NextResponse.redirect(
-        `/error?message=Payment failed or pending&formData=${encodeURIComponent(
-          JSON.stringify(formDataObj)
-        )}`
+      return NextResponse.json(
+        { message: "Payment failed or pending", formData: formDataObj },
+        { status: 400 }
       );
     }
   } catch (error) {
     console.error("Error processing payment callback:", error);
-    return NextResponse.redirect(`/error?message=Internal Server Error`);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
 
