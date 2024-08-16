@@ -15,6 +15,7 @@ export default function Form(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [marginTop, setMarginTop] = useState("");
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const email = props.user?.email;
 
   const updateMarginTop = () => {
     const screenWidth = window.innerWidth;
@@ -84,7 +85,7 @@ export default function Form(props) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ words }),
+          body: JSON.stringify({ words, email }), // Include the user's email in the request body
         });
 
         if (response.ok) {

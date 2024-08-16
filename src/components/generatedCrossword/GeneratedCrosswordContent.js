@@ -14,6 +14,12 @@ export default function GeneratedCrosswordContent(props) {
   const [words, setWords] = useState([]);
   const wrapperRef = useRef(null);
   const buttonRef = useRef(null);
+  let watermarkStyle;
+  if (props.user !== null && props.user.generations !== 0) {
+    watermarkStyle = styles.noWatermarkBG;
+  } else {
+    watermarkStyle = styles.watermarkBG;
+  }
 
   useEffect(() => {
     const dataParam = params.get("data");
@@ -28,7 +34,7 @@ export default function GeneratedCrosswordContent(props) {
       <Header isCrosswordGenerated={true} user={props.user} />
       <div className={styles.container}>
         <div className={styles.wrapper} id="wrapper" ref={wrapperRef}>
-          <div className={styles.crossword_wrapper}>
+          <div className={`${styles.crossword_wrapper} ${watermarkStyle} `}>
             <div className="result"></div>
           </div>
           <Questions words={words} />
@@ -38,6 +44,7 @@ export default function GeneratedCrosswordContent(props) {
                 setIsButtonClicked={setIsButtonClicked}
                 wrapperRef={wrapperRef}
                 buttonRef={buttonRef}
+                user={props.user}
               />
             </div>
           ) : null}

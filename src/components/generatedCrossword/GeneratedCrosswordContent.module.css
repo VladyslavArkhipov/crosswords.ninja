@@ -18,10 +18,19 @@
 
 .crossword_wrapper{
     padding: 0px 80px;
-    background:url( ../../assets/Watermark.svg);
     background-size: cover;
     background-repeat: repeat;
     background-color: white;
+}
+
+.watermarkBG{
+    
+    background:url( ../../assets/Watermark.svg);
+    background-color: white;
+}
+
+.noWatermarkBG{
+    background: white;
 }
 
 .pdf_wrapper{
@@ -87,6 +96,17 @@
     box-shadow: 4px 4px 0px -2px rgba(213, 255, 0, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
 
 
+}
+
+.disabledButton{
+    box-shadow:4px 4px 0px -2px rgba(104, 107, 102, 1), 4px 4px 0px 0px rgba(104, 107, 102, 1);
+    background: rgba(190, 192, 190, 1);
+    color: rgba(104, 107, 102, 1);
+    cursor: none;
+}
+
+.disabledButton:hover{
+    box-shadow:4px 4px 0px -2px rgba(104, 107, 102, 1), 4px 4px 0px 0px rgba(104, 107, 102, 1);
 }
 
 @media (max-width: 768px) {

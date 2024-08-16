@@ -8,26 +8,19 @@ export async function createUser(user) {
   }
 }
 
-export async function deleteGeneration(user) {
+export async function getUserByEmail(email) {
   try {
-    // Находим пользователя в базе данных по идентификатору
-    const foundUser = await User.findById(user._id);
-
-    if (!foundUser) {
-      throw new Error("User not found");
-    }
-
-    // Проверяем, есть ли у пользователя генерации
-    if (foundUser.generations > 0) {
-      // Уменьшаем количество генераций на 1
-      foundUser.generations -= 1;
-
-      // Сохраняем изменения
-      await foundUser.save();
-    } else {
-      throw new Error("No generations left to delete");
-    }
+    const user = await User.findOne({ email });
+    return user;
   } catch (e) {
-    throw new Error(e.message || e);
+    throw new Error(e);
+  }
+}
+
+export async function updateUserGenerations(email, generations) {
+  try {
+    await User.updateOne({ email }, { $set: { generations } });
+  } catch (e) {
+    throw new Error(e);
   }
 }

@@ -1,17 +1,48 @@
 import { NextResponse } from "next/server";
+import { getUserByEmail, updateUserGenerations } from "@/queries/users"; // Import the necessary functions
+import { dbConnect } from "@/lib/mongo";
 
 export const POST = async (request) => {
+  const { words, email } = await request.json(); // Extract the user's email from the request body
+
+  // Create a DB Connection
   try {
-    const { words } = await request.json();
-
-    // Здесь вы можете сделать любые обработки данных
-
-    // Возвращаем данные в формате JSON
-    return NextResponse.json({ words }, { status: 200 });
-  } catch (error) {
-    console.error("Error processing request:", error);
-    return new NextResponse("Internal Server Error", { status: 500 });
+    await dbConnect();
+  } catch (err) {
+    console.error("Database connection error:", err);
+    return new NextResponse("Database connection error", {
+      status: 500,
+    });
   }
+
+  // Query the database for the user using the email
+  let user;
+  try {
+    user = await getUserByEmail(email);
+  } catch (err) {
+    console.error("Error querying user:", err);
+    return new NextResponse("Error querying user", {
+      status: 500,
+    });
+  }
+
+  // If the user is found and has generations greater than 0, decrement the generation count
+  if (user && user.generations > 0) {
+    try {
+      await updateUserGenerations(email, user.generations - 1);
+    } catch (err) {
+      console.error("Error updating user generations:", err);
+      return new NextResponse("Error updating user generations", {
+        status: 500,
+      });
+    }
+  }
+
+  // Continue with the existing logic for processing the words
+  // ...
+
+  // Return the response
+  return NextResponse.json({ words }, { status: 200 });
 };
 
 export const GET = async (request) => {
