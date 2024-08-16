@@ -17,6 +17,14 @@ export async function POST(req) {
 
     // Получаем данные из формы
     const formData = await req.formData();
+
+    // Преобразуем FormData в объект для удобного вывода
+    const formDataObj = {};
+    formData.forEach((value, key) => {
+      formDataObj[key] = value;
+    });
+
+    // Получаем данные из формы
     const transactionStatus = formData.get("transactionStatus");
     const amount = parseFloat(formData.get("amount")); // Преобразуем в число
     const orderReference = formData.get("orderReference");
@@ -26,7 +34,7 @@ export async function POST(req) {
       return NextResponse.json(
         {
           message: "Invalid request: missing required fields",
-          formData: formData,
+          formData: formDataObj,
         },
         { status: 400 }
       );
@@ -68,7 +76,7 @@ export async function POST(req) {
       // Логика обработки неуспешного или ожидающего платежа
       console.log(`Order ${orderReference} failed or pending`);
       return NextResponse.json(
-        { message: "Payment failed or pending" },
+        { message: "Payment failed or pending", formData: formDataObj },
         { status: 400 }
       );
     }
