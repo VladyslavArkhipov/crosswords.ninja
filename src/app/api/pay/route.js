@@ -1,72 +1,49 @@
 import { NextResponse } from "next/server";
-import fetch from "node-fetch";
 
 export async function POST(req) {
-  const {
-    merchantAccount,
-    merchantDomainName,
-    orderReference,
-    orderDate,
-    amount,
-    productName,
-    productCount,
-    productPrice,
-    tryMerchantSignature,
-  } = await req.json();
-
   try {
-    // Подготовка параметров для Wayforpay
-    const params = {
-      merchantAccount,
-      merchantDomainName,
-      orderReference,
-      orderDate,
-      amount,
-      currency: "USD",
-      productName: [productName],
-      productCount: [productCount],
-      productPrice: [productPrice],
-      defaultPaymentSystem: "card",
-      merchantSignature: tryMerchantSignature,
-    };
+    // Получаем данные из тела запроса
+    const { transactionStatus, amount, orderReference } = await req.json();
 
-    // Кодирование параметров в URL-строку
-    const queryParams = new URLSearchParams(params);
+    // Проверяем статус транзакции
+    if (!transactionStatus || !orderReference) {
+      return NextResponse.json(
+        { message: "Invalid request: missing required fields" },
+        { status: 400 }
+      );
+    }
 
-    // Отправка POST-запроса на Wayforpay
-    const response = await fetch("https://secure.wayforpay.com/pay", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: queryParams.toString(),
-    });
+    // Логика обработки успешного платежа
+    if (transactionStatus === "Approved") {
+      // Обновляем статус заказа в базе данных или выполняем другую логику
+      console.log(`Order ${orderReference} approved with amount: ${amount}`);
 
-    if (response.ok) {
-      // Возвращение HTML-страницы для оплаты
-      const html = await response.text();
-      return new NextResponse(html, {
-        headers: {
-          "Content-Type": "text/html",
-        },
-      });
+      // Возвращаем ответ об успешной обработке
+      return NextResponse.json(
+        { message: "Payment approved" },
+        { status: 200 }
+      );
     } else {
-      console.error("Error processing payment request:", response.statusText);
-      return new NextResponse(JSON.stringify({ error: response.statusText }), {
-        status: response.status,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      // Логика обработки неуспешного или ожидающего платежа
+      console.log(`Order ${orderReference} failed or pending`);
+
+      // Возвращаем ответ о неуспешной обработке
+      return NextResponse.json(
+        { message: "Payment failed or pending" },
+        { status: 400 }
+      );
     }
   } catch (error) {
-    console.error("Error processing payment request:", error);
-
-    return new NextResponse(JSON.stringify({ error: error.message }), {
-      status: 500,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // Ловим ошибки и возвращаем статус 500
+    console.error("Error processing payment callback:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
+}
+
+export async function GET() {
+  // Метод не разрешен для GET-запросов
+  return NextResponse.json({ message: "Method not allowed" }, { status: 405 });
 }

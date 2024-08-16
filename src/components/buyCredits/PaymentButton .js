@@ -20,11 +20,7 @@ export default function PaymentButton(props) {
   return (
     <>
       <form method="post" action="https://secure.wayforpay.com/pay">
-        <input
-          type="hidden"
-          name="returnUrl"
-          value="https://localhost:3000/paymentInfo"
-        />
+        <input type="hidden" name="returnUrl" value="https://google.com" />
         <input
           type="hidden"
           name="merchantAccount"
