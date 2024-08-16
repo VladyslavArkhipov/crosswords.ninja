@@ -51,9 +51,7 @@ export async function POST(req) {
             `User ${email} updated with ${generationsToAdd} generations`
           );
 
-          return NextResponse.redirect(
-            `https://crosswords-ninja.vercel.app/paymentResult?status=Approved&orderReference=${orderReference}&amount=${amount}`
-          );
+          return NextResponse.redirect(`https://crosswords-ninja.vercel.app/`);
         } else {
           return NextResponse.json(
             { message: "User not found" },
