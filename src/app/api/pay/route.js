@@ -25,7 +25,11 @@ export async function POST(req) {
 
       // Возвращаем ответ об успешной обработке
       return NextResponse.json(
-        { message: "Payment approved" },
+        {
+          message: "Payment approved",
+          amount: amount,
+          orderReference: orderReference,
+        },
         { status: 200 }
       );
     } else {
