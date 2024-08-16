@@ -54,16 +54,12 @@ export async function POST(req) {
           console.log(
             `User ${email} updated with ${generationsToAdd} generations`
           );
-          return NextResponse.redirect(
-            `/success?message=Payment approved and user updated`
-          );
+          return NextResponse.redirect(`/`);
         } else {
           return NextResponse.redirect(`/error?message=User not found`);
         }
       } else {
-        return NextResponse.redirect(
-          `/error?message=Invalid amount for generations`
-        );
+        return NextResponse.redirect(`/`);
       }
     } else {
       // Логика обработки неуспешного или ожидающего платежа
