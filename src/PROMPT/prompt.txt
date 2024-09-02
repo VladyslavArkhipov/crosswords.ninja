@@ -1,6 +1,6 @@
 Your task:
 
-1. Create questions for a crossword puzzle using the words from the list.
+1. Create questions for a crossword puzzle using the words from the list!
 2. The questions should be written in the same language as the words.
 3. Take into account the word numbers — they indicate the words' positions in the crossword.
 4. The questions should be simple and precise to be suitable for a crossword.
