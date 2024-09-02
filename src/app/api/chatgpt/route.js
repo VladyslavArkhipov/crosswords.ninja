@@ -6,7 +6,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-async function getPrompt() {
+/* async function getPrompt() {
   try {
     const prompt = await fs.readFile("src/PROMPT/prompt.txt", "utf-8");
     return prompt;
@@ -14,7 +14,7 @@ async function getPrompt() {
     console.error("Error reading prompt file:", error);
     throw new Error("Failed to load prompt");
   }
-}
+} */
 
 export async function POST(req) {
   const { chatgptString } = await req.json();
