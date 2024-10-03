@@ -99,10 +99,8 @@ export default function DownloadPDFButton(props) {
   return (
     <button
       type="button"
-      className={`${styles.button} btn ${
-        props.user === null || props.user.generations === 0
-          ? styles.disabledButton
-          : ""
+      className={`btn btnPrimary ${
+        props.user === null || props.user.generations === 0 ? "btnDisabled" : ""
       }`}
       onClick={downloadPDF}
     >

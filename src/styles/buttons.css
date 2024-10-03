@@ -28,9 +28,11 @@
     box-shadow: 4px 4px 0px 0px rgba(39, 44, 37, 1), 4px 4px 0px -2px rgba(39, 44, 37, 1) ;
   }
   
-  .btnPrimary:disabled{
-    background-color: rgba(233, 234, 233, 1);
-    box-shadow: 4px 4px 0px 0px rgba(169, 171, 168, 1),4px 4px 0px -2px rgba(169, 171, 168, 1);
+  .btnDisabled{
+    box-shadow:4px 4px 0px -2px rgba(104, 107, 102, 1), 4px 4px 0px 0px rgba(104, 107, 102, 1);
+    background: rgba(190, 192, 190, 1);
+    color: rgba(104, 107, 102, 1);
+    cursor: none;
   }
   
   .btnAdditional{
@@ -82,7 +84,7 @@
 
   @media screen and (max-width: 768px) {
     .btn{
-      width: 343px;
+      width: 100%;
     }
   }
 

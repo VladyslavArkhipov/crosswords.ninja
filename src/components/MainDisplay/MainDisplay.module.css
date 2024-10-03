@@ -1,3 +1,7 @@
 .mainDisplay{
     background: url(../../assets/BG.svg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }

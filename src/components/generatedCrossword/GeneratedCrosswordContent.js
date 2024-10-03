@@ -31,8 +31,8 @@ export default function GeneratedCrosswordContent(props) {
 
   return (
     <>
-      <Header isCrosswordGenerated={true} user={props.user} />
       <div className={styles.container}>
+        <Header isCrosswordGenerated={true} user={props.user} />
         <div className={styles.wrapper} id="wrapper" ref={wrapperRef}>
           <div className={`${styles.crossword_wrapper} ${watermarkStyle} `}>
             <div className="result"></div>
