@@ -21,11 +21,6 @@ export default function PaymentButton({ choosedGenerations, user }) {
     <form method="post" action="https://secure.wayforpay.com/pay">
       <input
         type="hidden"
-        name="returnUrl"
-        value="https://crosswords-ninja.vercel.app/payment-success"
-      />
-      <input
-        type="hidden"
         name="merchantAccount"
         value="crosswords_ninja_vercel_app"
       />
