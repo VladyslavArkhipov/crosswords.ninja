@@ -4,7 +4,7 @@ import { User } from "@/model/user-model";
 
 export default async function Home() {
   const session = await auth();
-  const user = await User.findOne({ email: session?.user.email });
+  const user = await User.findOne({ email: session?.user?.email });
 
   return (
     <>
