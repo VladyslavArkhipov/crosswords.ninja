@@ -7,12 +7,14 @@ import ShowPass from "@/assets/ShowPass";
 import HidePass from "@/assets/HidePass";
 import Success from "@/assets/Success";
 import Close from "@/assets/Close";
+import useValidation from "./useValidation";
 
 const RegistrationForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isUserRegistered, setIsUserRegistered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef(null);
+  const { errors, validate } = useValidation();
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -26,9 +28,14 @@ const RegistrationForm = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    try {
-      const formData = new FormData(event.currentTarget);
+    const formData = new FormData(event.currentTarget);
 
+    if (!validate(formData)) {
+      setIsLoading(false);
+      return;
+    }
+
+    try {
       const email = formData.get("email");
       const password = formData.get("password");
 
