@@ -12,7 +12,7 @@
     padding: 10px;
     border: 2px solid #D5FF00;
     border-radius: 4px;
-    background-color: #1a1a1a;
+    background-color: rgba(39, 44, 37, 1);
     color: #ffffff;
     cursor: pointer;
     display: flex;
