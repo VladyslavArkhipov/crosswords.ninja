@@ -6,7 +6,23 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { User } from "../model/user-model";
 import bcrypt from "bcryptjs";
 import { createUser } from "@/queries/users";
-import { dbConnect } from "@/lib/mongo";
+import mongoose from "mongoose";
+
+// Кэширование соединения с базой данных для предотвращения повторных подключений
+let isConnected = false;
+async function dbConnect() {
+  if (isConnected) return;
+
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      /* настройки mongoose */
+    });
+    isConnected = true;
+    console.log("Database connected");
+  } catch (error) {
+    console.error("Database connection error:", error);
+  }
+}
 
 export const {
   handlers: { GET, POST },
@@ -30,13 +46,10 @@ export const {
           return null;
         }
 
-        await dbConnect(); // Убедитесь, что подключение к базе данных выполняется
+        await dbConnect(); // Подключение к базе данных только при необходимости
 
         try {
-          const user = await User.findOne({
-            email: credentials.email,
-          });
-
+          const user = await User.findOne({ email: credentials.email });
           if (!user) {
             console.error("User not found");
             throw new Error("User not found");
@@ -46,7 +59,6 @@ export const {
             credentials.password,
             user.password
           );
-
           if (!isMatch) {
             console.error("Invalid password");
             throw new Error("Email or Password is not correct");
@@ -65,7 +77,6 @@ export const {
       authorization: {
         params: {
           prompt: "consent",
-          access_type: "offline",
           response_type: "code",
         },
       },
@@ -77,17 +88,23 @@ export const {
         token.accessToken = account.access_token;
       }
 
+      // Асинхронное создание пользователя при первом входе через Google
       if (profile) {
-        const existingUser = await User.findOne({ email: profile.email });
-        if (!existingUser) {
-          await dbConnect();
-          const newUser = {
-            name: profile.name,
-            email: profile.email,
-            password: "google user",
-          };
-          await createUser(newUser);
-        }
+        dbConnect().then(async () => {
+          const existingUser = await User.findOne({ email: profile.email });
+          if (!existingUser) {
+            const newUser = {
+              name: profile.name,
+              email: profile.email,
+              password: "google user", // Пароль-заглушка для Google пользователей
+            };
+            try {
+              await createUser(newUser);
+            } catch (error) {
+              console.error("Error creating user:", error);
+            }
+          }
+        });
       }
 
       return token;
