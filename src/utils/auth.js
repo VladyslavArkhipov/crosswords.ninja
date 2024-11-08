@@ -14,8 +14,14 @@ async function dbConnect() {
   if (isConnected) return;
 
   try {
+    if (!process.env.MONGO_DB_CONNECTION_STRING) {
+      throw new Error(
+        "MONGO_DB_CONNECTION_STRING environment variable is missing."
+      );
+    }
     await mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {
-      /* настройки mongoose */
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
     isConnected = true;
     console.log("Database connected");
@@ -88,23 +94,23 @@ export const {
         token.accessToken = account.access_token;
       }
 
-      // Асинхронное создание пользователя при первом входе через Google
+      // Синхронное создание пользователя при первом входе через Google
       if (profile) {
-        dbConnect().then(async () => {
-          const existingUser = await User.findOne({ email: profile.email });
-          if (!existingUser) {
-            const newUser = {
-              name: profile.name,
-              email: profile.email,
-              password: "google user", // Пароль-заглушка для Google пользователей
-            };
-            try {
-              await createUser(newUser);
-            } catch (error) {
-              console.error("Error creating user:", error);
-            }
+        await dbConnect();
+        const existingUser = await User.findOne({ email: profile.email });
+
+        if (!existingUser) {
+          const newUser = {
+            name: profile.name,
+            email: profile.email,
+            password: "google user", // Пароль-заглушка для Google пользователей
+          };
+          try {
+            await createUser(newUser); // Дождаться завершения создания пользователя
+          } catch (error) {
+            console.error("Error creating user:", error);
           }
-        });
+        }
       }
 
       return token;
