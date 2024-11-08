@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import styles from "./PaymentSuccess.module.css";
 
 export default function PaymentSuccess() {
   const searchParams = useSearchParams();
