@@ -3,16 +3,11 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const data = await request.json(); // Получаем JSON от Wayforpay
+  const buf = await request.text();
+  const data = buf.toString();
 
-  // Пример: проверяем успешность оплаты (это зависит от структуры данных Wayforpay)
-  if (data.transactionStatus === "Approved") {
-    // Здесь можно обновить базу данных, отметив заказ как оплаченный
-    console.log("Оплата успешна", data);
-  } else {
-    console.log("Оплата не прошла", data);
-  }
+  // Обработка данных от Wayforpay (например, обновление базы данных)
 
-  // Возвращаем 200 OK, чтобы Wayforpay знал, что мы успешно обработали запрос
-  return NextResponse.json({ status: "ok" });
+  // Возвращаем простой ответ для Wayforpay
+  return NextResponse.json({ status: "success" });
 }
