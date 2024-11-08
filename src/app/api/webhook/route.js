@@ -1,7 +1,7 @@
 // src/app/api/webhook/route.js
 import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/mongo";
-import { User } from "@/models/User"; // Убедитесь, что путь до модели правильный
+import { User } from "@/model/user-model";
 import CryptoJS from "crypto-js";
 
 export const dynamic = "force-dynamic";
