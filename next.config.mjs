@@ -34,6 +34,7 @@ const nextConfig = {
     serverActions: {
       allowedOrigins: ["secure.wayforpay.com", "crosswords-ninja.vercel.app"],
     },
+    missingSuspenseWithCSRBailout: false,
   },
 };
 
