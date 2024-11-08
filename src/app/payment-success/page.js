@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
@@ -59,37 +59,39 @@ export default function PaymentSuccess() {
   }, [searchParams]);
 
   return (
-    <div className={styles.container}>
-      {status === "processing" && (
-        <div>
-          <h1>Обработка платежа...</h1>
-          <p>Пожалуйста, подождите</p>
-        </div>
-      )}
+    <Suspense fallback={<div>Загрузка...</div>}>
+      <div className={styles.container}>
+        {status === "processing" && (
+          <div>
+            <h1>Обработка платежа...</h1>
+            <p>Пожалуйста, подождите</p>
+          </div>
+        )}
 
-      {status === "success" && (
-        <div>
-          <h1>Оплата прошла успешно!</h1>
-          <p>Спасибо за покупку. Ваш заказ был успешно оплачен.</p>
-          {paymentDetails && (
-            <div className={styles.details}>
-              <p>Email: {paymentDetails.clientEmail}</p>
-              <p>
-                Сумма: {paymentDetails.amount} {paymentDetails.currency}
-              </p>
-              <p>Номер заказа: {paymentDetails.orderReference}</p>
-            </div>
-          )}
-        </div>
-      )}
+        {status === "success" && (
+          <div>
+            <h1>Оплата прошла успешно!</h1>
+            <p>Спасибо за покупку. Ваш заказ был успешно оплачен.</p>
+            {paymentDetails && (
+              <div className={styles.details}>
+                <p>Email: {paymentDetails.clientEmail}</p>
+                <p>
+                  Сумма: {paymentDetails.amount} {paymentDetails.currency}
+                </p>
+                <p>Номер заказа: {paymentDetails.orderReference}</p>
+              </div>
+            )}
+          </div>
+        )}
 
-      {status === "error" && (
-        <div>
-          <h1>Произошла ошибка</h1>
-          <p>{error}</p>
-          <p>Пожалуйста, свяжитесь с поддержкой</p>
-        </div>
-      )}
-    </div>
+        {status === "error" && (
+          <div>
+            <h1>Произошла ошибка</h1>
+            <p>{error}</p>
+            <p>Пожалуйста, свяжитесь с поддержкой</p>
+          </div>
+        )}
+      </div>
+    </Suspense>
   );
 }
