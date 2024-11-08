@@ -1,7 +1,7 @@
 // src/app/api/update-generations/route.js
 import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/mongo";
-import { User } from "@/models/User";
+import { User } from "@/model/user-model";
 import CryptoJS from "crypto-js";
 
 export async function POST(request) {
