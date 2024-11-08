@@ -3,16 +3,17 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  // Чтение и преобразование тела запроса
+  // Логируем заголовки для отладки
+  console.log("Request Headers:", request.headers);
+
   const buf = await request.text();
   const data = buf.toString();
 
-  // Логирование данных платежа для отладки
   console.log("Payment Data Received:", data);
 
-  // Здесь можно добавить любую дополнительную обработку данных платежа,
-  // например, обновление базы данных о статусе заказа и т.д.
+  // Добавляем произвольный ответ, чтобы Next.js пропустил этот запрос
+  const response = NextResponse.json({ status: "success" });
+  response.headers.set("Access-Control-Allow-Origin", "*"); // Разрешаем любые источники
 
-  // Возвращаем простой JSON-ответ для Wayforpay
-  return NextResponse.json({ status: "success" });
+  return response;
 }
