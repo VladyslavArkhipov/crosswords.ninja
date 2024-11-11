@@ -16,15 +16,4 @@ export default async function BuyCredits() {
     );
     return <BuyCreditsContent user={userCache} />;
   }
-
-  // Если нет - делаем запрос к базе
-  const user = await User.findOne({ email: session?.user?.email });
-  console.log("[BuyCredits] Loaded user:", user);
-
-  // Кешируем пользователя для последующего использования
-  if (user) userCache = user;
-
-  if (user) {
-    return <BuyCreditsContent user={user} />;
-  }
 }
