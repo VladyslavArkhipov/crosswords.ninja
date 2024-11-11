@@ -1,6 +1,5 @@
 import BuyCreditsContent from "@/components/buyCredits/BuyCreditsContent";
 import { auth } from "@/utils/auth";
-import { User } from "@/model/user-model";
 
 export default async function BuyCredits() {
   const fetchUser = async () => {
