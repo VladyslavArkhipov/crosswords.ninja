@@ -22,8 +22,28 @@ export default function PaymentButton({ choosedGenerations, user }) {
     secretKey
   ).toString(CryptoJS.enc.Hex);
 
+  // Функция для обработки отправки формы
+  const handleSubmit = (event) => {
+    event.preventDefault(); // предотвращаем автоматическую отправку для логирования данных
+
+    // Логируем все данные формы в консоль
+    console.log("Order Reference:", orderReference);
+    console.log("Order Date:", orderDate);
+    console.log("Amount:", amount);
+    console.log("Product Name:", productName);
+    console.log("Client Email:", user.email);
+    console.log("Merchant Signature:", merchantSignature);
+
+    // Теперь отправляем форму
+    event.target.submit();
+  };
+
   return (
-    <form method="post" action="https://secure.wayforpay.com/pay">
+    <form
+      method="post"
+      action="https://secure.wayforpay.com/pay"
+      onSubmit={handleSubmit}
+    >
       <input
         type="hidden"
         name="merchantAccount"
