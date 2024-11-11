@@ -60,7 +60,7 @@ export default function PaymentSuccess() {
   }, [searchParams]);
 
   return (
-    <div className={styles.container}>
+    <div>
       {status === "processing" && (
         <div>
           <h1>Обработка платежа...</h1>
@@ -73,7 +73,7 @@ export default function PaymentSuccess() {
           <h1>Оплата прошла успешно!</h1>
           <p>Спасибо за покупку. Ваш заказ был успешно оплачен.</p>
           {paymentDetails && (
-            <div className={styles.details}>
+            <div>
               <p>Email: {paymentDetails.clientEmail}</p>
               <p>
                 Сумма: {paymentDetails.amount} {paymentDetails.currency}
