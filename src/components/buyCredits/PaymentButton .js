@@ -2,6 +2,11 @@ import CryptoJS from "crypto-js";
 import styles from "./BuyCreditsContent.module.css";
 
 export default function PaymentButton({ choosedGenerations, user }) {
+  // Проверяем, что `user` и `user.email` существуют
+  if (!user || !user.email) {
+    return <p>Loading user data...</p>; // или подходящий компонент загрузки
+  }
+
   const orderReference =
     Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
   const orderDate = Math.floor(
