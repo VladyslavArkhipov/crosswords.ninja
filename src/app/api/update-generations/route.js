@@ -8,7 +8,9 @@ export async function POST(request) {
   console.log("[Update Generations] Starting update process");
 
   try {
-    const paymentData = await request.json();
+    // Получаем данные из формы, отправленной WayforPay
+    const formData = await request.formData();
+    const paymentData = Object.fromEntries(formData.entries());
     console.log("[Update Generations] Received payment data:", paymentData);
 
     /* // Проверяем статус транзакции
