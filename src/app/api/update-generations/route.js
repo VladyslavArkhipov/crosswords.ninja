@@ -8,44 +8,39 @@ export async function POST(request) {
   console.log("[Update Generations] Starting update process");
 
   try {
-    // Получаем данные из формы, отправленной WayforPay
-    const formData = await request.formData();
-    const paymentData = Object.fromEntries(formData.entries());
+    // Логируем заголовок Content-Type для точной диагностики
+    const contentType = request.headers.get("content-type") || "";
+    console.log("[Update Generations] Content-Type received:", contentType);
+
+    let paymentData;
+
+    // Проверка формата данных на основе Content-Type
+    if (contentType.includes("application/json")) {
+      paymentData = await request.json();
+    } else if (contentType.includes("application/x-www-form-urlencoded")) {
+      const formData = await request.formData();
+      paymentData = Object.fromEntries(formData.entries());
+    } else {
+      throw new Error(`Unsupported content type: ${contentType}`);
+    }
+
     console.log("[Update Generations] Received payment data:", paymentData);
 
-    /* // Проверяем статус транзакции
-    if (paymentData.transactionStatus !== "Approved") {
-      console.log(
-        "[Update Generations] Transaction not approved:",
-        paymentData.transactionStatus
-      );
-      return NextResponse.json(
-        {
-          status: "error",
-          message: "Transaction not approved",
-        },
-        { status: 400 }
-      );
-    } */
-
-    // Подключаемся к БД
+    // Подключаемся к базе данных
     await dbConnect();
     console.log("[Update Generations] Database connected");
 
-    // Получаем количество generations из productName
+    // Обрабатываем данные, увеличивая количество generations
     const generations = parseInt(paymentData.productName.split(" ")[0]);
     console.log("[Update Generations] Generations to add:", generations);
 
-    // Находим пользователя перед обновлением
+    // Проверяем существование пользователя
     const userBefore = await User.findOne({ email: paymentData.clientEmail });
     console.log("[Update Generations] User before update:", userBefore);
 
     if (!userBefore) {
       return NextResponse.json(
-        {
-          status: "error",
-          message: "User not found",
-        },
+        { status: "error", message: "User not found" },
         { status: 404 }
       );
     }
@@ -58,10 +53,7 @@ export async function POST(request) {
 
     if (result.modifiedCount === 0) {
       return NextResponse.json(
-        {
-          status: "error",
-          message: "Failed to update generations",
-        },
+        { status: "error", message: "Failed to update generations" },
         { status: 500 }
       );
     }
@@ -79,10 +71,7 @@ export async function POST(request) {
   } catch (error) {
     console.error("[Update Generations] Error:", error);
     return NextResponse.json(
-      {
-        status: "error",
-        message: error.message,
-      },
+      { status: "error", message: error.message },
       { status: 500 }
     );
   }
