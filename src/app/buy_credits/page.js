@@ -6,5 +6,5 @@ import { auth } from "@/utils/auth";
 export default async function BuyCreditsPage() {
   const session = await auth(); // Получаем сессию на сервере
 
-  return <BuyCreditsContent session={session} />;
+  if (session) return <BuyCreditsContent session={session} />;
 }
