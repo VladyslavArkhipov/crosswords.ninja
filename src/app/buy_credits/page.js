@@ -2,13 +2,29 @@ import BuyCreditsContent from "@/components/buyCredits/BuyCreditsContent";
 import { auth } from "@/utils/auth";
 import { User } from "@/model/user-model";
 
+// Создаём кеш объекта
+let userCache = null;
+
 export default async function BuyCredits() {
   const session = await auth();
+
+  // Если пользователь уже закеширован, используем его
+  if (userCache && userCache.email === session?.user?.email) {
+    console.log(
+      "[BuyCredits] Используем кешированного пользователя:",
+      userCache
+    );
+    return <BuyCreditsContent user={userCache} />;
+  }
+
+  // Если нет - делаем запрос к базе
   const user = await User.findOne({ email: session?.user?.email });
   console.log("[BuyCredits] Loaded user:", user);
 
-  // Проверка наличия пользователя перед рендерингом контента
+  // Кешируем пользователя для последующего использования
+  if (user) userCache = user;
+
   if (user) {
-    return <BuyCreditsContent user={user} />; // или соответствующий компонент загрузки
+    return <BuyCreditsContent user={user} />;
   }
 }
