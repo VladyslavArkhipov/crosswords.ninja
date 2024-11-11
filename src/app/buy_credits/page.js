@@ -3,18 +3,19 @@ import { auth } from "@/utils/auth";
 import { User } from "@/model/user-model";
 
 export default async function BuyCredits() {
-  const User = async function () {
+  const fetchUser = async () => {
     const session = await auth();
-    const user = session?.user;
-    return user;
+    return session?.user || null;
   };
 
-  const user = await User();
+  const user = await fetchUser();
 
-  console.log("[BuyCredits] Loadedded user:", user);
+  console.log("[BuyCredits] Loaded user:", user);
 
-  // Проверка наличия пользователя перед рендерингом контента
   if (user) {
-    return <BuyCreditsContent user={user} />; // или соответствующий компонент загрузки
+    return <BuyCreditsContent user={user} />;
+  } else {
+    console.log("[BuyCredits] User is undefined or not loaded.");
+    return <div>Loading...</div>; // или другой компонент для загрузки
   }
 }
