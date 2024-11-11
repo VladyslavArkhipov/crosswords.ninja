@@ -5,7 +5,7 @@ import { User } from "@/model/user-model";
 export default async function BuyCredits() {
   const session = await auth();
   const user = session?.user;
-  console.log("[BuyCredits] Loaded user:", user);
+  console.log("[BuyCredits] Loadedded user:", user);
 
   // Проверка наличия пользователя перед рендерингом контента
   if (user) {
