@@ -11,7 +11,7 @@ export async function POST(request) {
     const paymentData = await request.json();
     console.log("[Update Generations] Received payment data:", paymentData);
 
-    // Проверяем статус транзакции
+    /* // Проверяем статус транзакции
     if (paymentData.transactionStatus !== "Approved") {
       console.log(
         "[Update Generations] Transaction not approved:",
@@ -24,7 +24,7 @@ export async function POST(request) {
         },
         { status: 400 }
       );
-    }
+    } */
 
     // Подключаемся к БД
     await dbConnect();
