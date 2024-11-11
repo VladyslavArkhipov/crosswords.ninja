@@ -12,6 +12,7 @@ export default function BuyCreditsContent(props) {
     generations: 10,
     price: 3,
   });
+  console.log(props);
   return (
     <>
       <MainDisplay user={props.user} />
