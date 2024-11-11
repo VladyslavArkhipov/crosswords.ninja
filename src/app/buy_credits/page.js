@@ -8,9 +8,7 @@ export default async function BuyCredits() {
   console.log("[BuyCredits] Loaded user:", user);
 
   // Проверка наличия пользователя перед рендерингом контента
-  if (!user) {
-    return <p>Loading user data...</p>; // или соответствующий компонент загрузки
+  if (user) {
+    return <BuyCreditsContent user={user} />; // или соответствующий компонент загрузки
   }
-
-  return <BuyCreditsContent user={user} />;
 }
