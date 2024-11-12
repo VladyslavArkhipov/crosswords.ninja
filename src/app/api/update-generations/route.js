@@ -26,16 +26,11 @@ export async function POST(request) {
 
     // Если paymentData содержит строку, попробуем распарсить её как JSON
     if (typeof paymentData === "string") {
-      paymentData = JSON.parse(Object.keys(paymentData)[0]);
+      paymentData = JSON.parse(paymentData);
     }
 
-    const jsonStr = paymentData.split(": {")[1].split("': ''")[0];
-
-    // Разбираем JSON-строку
-    const data = JSON.parse(jsonStr);
-
-    // Извлекаем значение "amount"
-    const amount = data.amount;
+    // Теперь paymentData должен быть объектом, содержащим данные платежа
+    const amount = paymentData.amount;
 
     console.log("Amount:", amount);
 
