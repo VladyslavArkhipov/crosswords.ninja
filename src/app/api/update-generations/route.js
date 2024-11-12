@@ -29,6 +29,16 @@ export async function POST(request) {
       paymentData = JSON.parse(Object.keys(paymentData)[0]);
     }
 
+    const jsonStr = paymentData.split(": {")[1].split("': ''")[0];
+
+    // Разбираем JSON-строку
+    const data = JSON.parse(jsonStr);
+
+    // Извлекаем значение "amount"
+    const amount = data.amount;
+
+    console.log("Amount:", amount);
+
     console.log("[Update Generations] Parsed payment data:", paymentData);
 
     // Подключаемся к базе данных
