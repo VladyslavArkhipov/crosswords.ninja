@@ -19,14 +19,12 @@ export async function POST(request) {
       paymentData = await request.json();
     } else if (contentType.includes("application/x-www-form-urlencoded")) {
       const formData = await request.formData();
+      // Преобразуем FormData в объект
       paymentData = Object.fromEntries(formData.entries());
+      // Распарсиваем строку в объект, так как данные приходят в виде JSON-строки
+      paymentData = JSON.parse(paymentData[Object.keys(paymentData)[0]]);
     } else {
       throw new Error(`Unsupported content type: ${contentType}`);
-    }
-
-    // Если paymentData содержит строку, попробуем распарсить её как JSON
-    if (typeof paymentData === "string") {
-      paymentData = JSON.parse(paymentData);
     }
 
     // Теперь paymentData должен быть объектом, содержащим данные платежа
@@ -42,7 +40,7 @@ export async function POST(request) {
 
     // Обрабатываем данные, увеличивая количество generations
     let generations;
-    if (paymentData.amount === 3) generations = 10;
+    if (paymentData.amount === 0.1) generations = 10;
     console.log("[Update Generations] Generations to add:", generations);
 
     // Проверяем существование пользователя
