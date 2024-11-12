@@ -12,7 +12,7 @@ export default function PaymentSuccess() {
   const [error, setError] = useState(null);
   const [paymentDetails, setPaymentDetails] = useState(null);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const processPayment = async () => {
       try {
         // Собираем все параметры из URL
@@ -57,7 +57,7 @@ export default function PaymentSuccess() {
     };
 
     processPayment();
-  }, [searchParams]);
+  }, [searchParams]); */
 
   return (
     <div>
