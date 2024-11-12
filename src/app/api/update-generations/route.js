@@ -24,7 +24,12 @@ export async function POST(request) {
       throw new Error(`Unsupported content type: ${contentType}`);
     }
 
-    console.log("[Update Generations] Received payment data:", paymentData);
+    // Если paymentData содержит строку, попробуем распарсить её как JSON
+    if (typeof paymentData === "string") {
+      paymentData = JSON.parse(Object.keys(paymentData)[0]);
+    }
+
+    console.log("[Update Generations] Parsed payment data:", paymentData);
 
     // Подключаемся к базе данных
     await dbConnect();
