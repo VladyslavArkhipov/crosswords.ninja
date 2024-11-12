@@ -7,6 +7,7 @@ import { User } from "@/model/user-model";
 export default async function BuyCreditsPage() {
   const session = await auth(); // Получаем сессию на сервере
   const user = await User.findOne({ email: session?.user?.email });
+  console.log(user);
 
   if (session) return <BuyCreditsContent user={user} />;
 }
