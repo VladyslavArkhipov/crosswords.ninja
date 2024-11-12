@@ -21,8 +21,10 @@ export async function POST(request) {
       const formData = await request.formData();
       // Преобразуем FormData в объект
       paymentData = Object.fromEntries(formData.entries());
+      // Получаем первый ключ объекта, так как данные приходят в виде объекта с одним ключом
+      const key = Object.keys(paymentData)[0];
       // Распарсиваем строку в объект, так как данные приходят в виде JSON-строки
-      paymentData = JSON.parse(paymentData[Object.keys(paymentData)[0]]);
+      paymentData = JSON.parse(key);
     } else {
       throw new Error(`Unsupported content type: ${contentType}`);
     }
