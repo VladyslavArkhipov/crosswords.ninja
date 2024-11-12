@@ -31,7 +31,8 @@ export async function POST(request) {
     console.log("[Update Generations] Database connected");
 
     // Обрабатываем данные, увеличивая количество generations
-    const generations = parseInt(paymentData.productName.split(" ")[0]);
+    let generations;
+    if (paymentData.amount === 3) generations = 10;
     console.log("[Update Generations] Generations to add:", generations);
 
     // Проверяем существование пользователя
