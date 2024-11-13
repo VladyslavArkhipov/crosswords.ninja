@@ -15,8 +15,8 @@ export default function PaymentButton({ choosedGenerations, user }) {
   const amount = choosedGenerations.price;
   const productName = `${choosedGenerations.generations} generations`;
 
-  const signatureString = `crosswords_ninja_vercel_app;https://crosswords-ninja.vercel.app/;${orderReference};${orderDate};${amount};USD;${productName};1;1`;
-  const secretKey = "7862ddd38cb6b88428bf1f8cc1c828f1e415a8f1";
+  const signatureString = `crosswords_ninja_vercel_app1;https://crosswords-ninja.vercel.app/;${orderReference};${orderDate};${amount};USD;${productName};1;1`;
+  const secretKey = "c118ca4b28663363213ebe9600a0e5353cb0cf37";
   const merchantSignature = CryptoJS.HmacMD5(
     signatureString,
     secretKey
