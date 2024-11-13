@@ -52,7 +52,10 @@ export async function POST(request) {
 
     // Обрабатываем данные, увеличивая количество generations
     let generations;
-    if (paymentData.amount === 0.1) generations = 10;
+    if (paymentData.amount === 0.1) generations = 5;
+    if (paymentData.amount === 0.2) generations = 10;
+    if (paymentData.amount === 0.2) generations = 15;
+
     console.log("[Update Generations] Generations to add:", generations);
 
     // Проверяем существование пользователя
