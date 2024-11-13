@@ -47,7 +47,7 @@ export default function PaymentButton({ choosedGenerations, user }) {
       <input
         type="hidden"
         name="merchantAccount"
-        value="crosswords_ninja_vercel_app"
+        value="crosswords_ninja_vercel_app1"
       />
       <input type="hidden" name="merchantAuthType" value="SimpleSignature" />
       <input
