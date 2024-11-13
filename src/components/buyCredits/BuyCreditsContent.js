@@ -10,7 +10,7 @@ import Close from "@/assets/Close";
 export default function BuyCreditsContent(props) {
   const [choosedGenerations, setChoosedGenerations] = useState({
     generations: 10,
-    price: 3,
+    price: 0.2,
   });
   console.log(props);
   return (
