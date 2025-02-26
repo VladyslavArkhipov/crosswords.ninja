@@ -2,6 +2,16 @@
     display: flex;
     justify-content: center;
     padding-bottom: 32px;
+    background-color: white;
+}
+
+.default {
+    margin-right: 32px;
+}
+
+.underline {
+    text-decoration: underline;
+    margin-right: 16px;
 }
 
 .footer_light {
@@ -10,4 +20,10 @@
 
 .footer_dark {
     color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .default {
+        margin-right: 16px;
+    }
 }

@@ -1,241 +1,242 @@
 @font-face {
-    font-family: 'Mulish Bold';
-    src: url(../fonts/Mulish-Bold.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish Medium';
-    src: url(../fonts/Mulish-Medium.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish ExtraBold';
-    src: url(../fonts/Mulish-ExtraBold.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish Light';
-    src: url(../fonts/Mulish-Light.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish Regular';
-    src: url(../fonts/Mulish-Regular.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish SemiBold';
-    src: url(../fonts/Mulish-SemiBold.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish Italic';
-    src: url(../fonts/Mulish-Italic.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish ExtraLight';
-    src: url(../fonts/Mulish-ExtraLight.ttf);
-  }
-  
-  @font-face {
-    font-family: 'Mulish Black';
-    src: url(../fonts/Mulish-Black.ttf);
-  }
-  
-  
-  @font-face {
+  font-family: 'Mulish Bold';
+  src: url(../fonts/Mulish-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish Medium';
+  src: url(../fonts/Mulish-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish ExtraBold';
+  src: url(../fonts/Mulish-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish Light';
+  src: url(../fonts/Mulish-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish Regular';
+  src: url(../fonts/Mulish-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish SemiBold';
+  src: url(../fonts/Mulish-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish Italic';
+  src: url(../fonts/Mulish-Italic.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish ExtraLight';
+  src: url(../fonts/Mulish-ExtraLight.ttf);
+}
+
+@font-face {
+  font-family: 'Mulish Black';
+  src: url(../fonts/Mulish-Black.ttf);
+}
+
+
+@font-face {
+  font-family: 'MOON GET!';
+  src: url(../fonts/moon_get-Heavy.ttf);
+}
+
+*,
+body {
+  font-family: 'Mulish';
+}
+
+h1 {
+  font-family: 'MOON GET!';
+  font-size: 60px;
+  line-height: 160%;
+  font-weight: 800;
+}
+
+h2 {
+  font-family: 'Mulish SemiBold';
+  font-size: 32px;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+.bodyL {
+  font-size: 18px;
+  line-height: 150%;
+}
+
+.bodyLExtraBold {
+  font-family: 'Mulish ExtraBold';
+  font-weight: 800;
+}
+
+.bodyLBold {
+  font-family: 'Mulish Bold';
+  font-weight: 700;
+}
+
+.bodyLSemiBold {
+  font-family: 'Mulish SemiBold';
+  font-weight: 600;
+}
+
+.bodyLRegular {
+  font-family: 'Mulish Regular';
+  font-weight: 400;
+}
+
+.bodyM {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+
+.bodyMSemiBold {
+  font-family: 'Mulish SemiBold';
+  font-weight: 600;
+
+}
+
+.bodyMRegular {
+  font-family: 'Mulish Regular';
+  font-weight: 400;
+
+}
+
+.bodyS {
+  font-size: 14px;
+  line-height: 130%;
+}
+
+.bodySMedium {
+  font-family: 'Mulish Medium';
+  font-weight: 500;
+}
+
+.bodySRegular {
+  font-family: 'Mulish Regular';
+  font-weight: 400;
+}
+
+.bodyXS {
+  font-size: 12px;
+  line-height: 120%;
+}
+
+.bodyXSMedium {
+  font-family: 'Mulish Medium';
+  font-weight: 500;
+}
+
+.captions {
+  font-family: 'Mulish Regular';
+  font-size: 8px;
+  line-height: 120%;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  h1 {
     font-family: 'MOON GET!';
-    src: url(../fonts/moon_get-Heavy.ttf);
-  }
-  
-  *,body{
-    font-family: 'Mulish';
-  }
-  
-  h1{
-    font-family: 'MOON GET!';
-    font-size: 60px;
+    font-size: 36px;
     line-height: 160%;
     font-weight: 800;
   }
-  
-  h2{
+
+  h2 {
     font-family: 'Mulish SemiBold';
     font-size: 24px;
     line-height: 120%;
     font-weight: 600;
   }
-  
-  .bodyL{
+
+  .bodyXL {
+    font-family: 'Mulish ExtraBold';
     font-size: 18px;
     line-height: 150%;
+    font-weight: 800;
   }
-  
-  .bodyLExtraBold{
-    font-family: 'Mulish ExtraBold';
-  font-weight: 800;
-  }
-  
-  .bodyLBold{
-    font-family: 'Mulish Bold';
-    font-weight: 700;
-  }
-  
-  .bodyLSemiBold{
-    font-family: 'Mulish SemiBold';
-    font-weight: 600;
-  }
-  
-  .bodyLRegular{
-    font-family: 'Mulish Regular';
-    font-weight: 400;
-  }
-  
-  .bodyM{
+
+  .bodyL {
     font-size: 16px;
     line-height: 150%;
   }
-  
-  
-  .bodyMSemiBold{
+
+  .bodyLExtraBold {
+    font-family: 'Mulish ExtraBold';
+    font-weight: 800;
+  }
+
+  .bodyLBold {
+    font-family: 'Mulish Bold';
+    font-weight: 700;
+  }
+
+  .bodyLSemiBold {
     font-family: 'Mulish SemiBold';
     font-weight: 600;
-  
   }
-  
-  .bodyMRegular{
+
+  .bodyLRegular {
     font-family: 'Mulish Regular';
     font-weight: 400;
-  
   }
-  
-  .bodyS{
+
+  .bodyM {
     font-size: 14px;
+    line-height: 150%;
+  }
+
+
+  .bodyMSemiBold {
+    font-family: 'Mulish SemiBold';
+    font-weight: 600;
+
+  }
+
+  .bodyMRegular {
+    font-family: 'Mulish Regular';
+    font-weight: 400;
+
+  }
+
+  .bodyS {
+    font-size: 12px;
     line-height: 130%;
   }
-  
-  .bodySMedium{
+
+  .bodySMedium {
     font-family: 'Mulish Medium';
     font-weight: 500;
   }
-  
-  .bodySRegular{
+
+  .bodySRegular {
     font-family: 'Mulish Regular';
     font-weight: 400;
   }
-  
-  .bodyXS{
-    font-size: 12px;
-    line-height: 120%;
+
+  .bodyXS {
+    font-size: 10px;
+    line-height: 130%;
   }
-  
-  .bodyXSMedium{
+
+  .bodyXSMedium {
     font-family: 'Mulish Medium';
     font-weight: 500;
   }
-  
-  .captions{
+
+  .captions {
     font-family: 'Mulish Regular';
     font-size: 8px;
     line-height: 120%;
     font-weight: 400;
   }
-  
-  @media (max-width: 768px){
-    h1{
-      font-family: 'MOON GET!';
-      font-size: 36px;
-      line-height: 160%;
-      font-weight: 800;
-    }
-    
-    h2{
-      font-family: 'Mulish SemiBold';
-      font-size: 24px;
-      line-height: 120%;
-      font-weight: 600;
-    }
-  
-    .bodyXL{
-      font-family: 'Mulish ExtraBold';
-      font-size: 18px;
-      line-height: 150%;
-      font-weight: 800;
-    }
-    
-    .bodyL{
-      font-size: 16px;
-      line-height: 150%;
-    }
-    
-    .bodyLExtraBold{
-      font-family: 'Mulish ExtraBold';
-    font-weight: 800;
-    }
-    
-    .bodyLBold{
-      font-family: 'Mulish Bold';
-      font-weight: 700;
-    }
-    
-    .bodyLSemiBold{
-      font-family: 'Mulish SemiBold';
-      font-weight: 600;
-    }
-    
-    .bodyLRegular{
-      font-family: 'Mulish Regular';
-      font-weight: 400;
-    }
-    
-    .bodyM{
-      font-size: 14px;
-      line-height: 150%;
-    }
-    
-    
-    .bodyMSemiBold{
-      font-family: 'Mulish SemiBold';
-      font-weight: 600;
-    
-    }
-    
-    .bodyMRegular{
-      font-family: 'Mulish Regular';
-      font-weight: 400;
-    
-    }
-    
-    .bodyS{
-      font-size: 12px;
-      line-height: 130%;
-    }
-    
-    .bodySMedium{
-      font-family: 'Mulish Medium';
-      font-weight: 500;
-    }
-    
-    .bodySRegular{
-      font-family: 'Mulish Regular';
-      font-weight: 400;
-    }
-    
-    .bodyXS{
-      font-size: 10px;
-      line-height: 130%;
-    }
-    
-    .bodyXSMedium{
-      font-family: 'Mulish Medium';
-      font-weight: 500;
-    }
-    
-    .captions{
-      font-family: 'Mulish Regular';
-      font-size: 8px;
-      line-height: 120%;
-      font-weight: 400;
-    }
-  }
+}

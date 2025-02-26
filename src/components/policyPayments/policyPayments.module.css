@@ -1,0 +1,175 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: white;
+    border-radius: 6px;
+    width: 988px;
+    height: 631px;
+    border: 3px solid rgba(39, 44, 37, 1);
+    box-shadow: 4px 4px 0px -2px rgba(255, 255, 255, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
+
+    /* Важно: убираем скролл с modalContent */
+    overflow: hidden;
+
+    /* Задаем структуру модального окна для прокрутки только содержимого */
+    display: flex;
+    flex-direction: column;
+    padding-right: 32px;
+}
+
+.modalHeader {
+    margin-top: 32px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: end;
+}
+
+.modalHeader button {
+    background: none;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBody {
+    padding-right: 24px;
+    padding-left: 32px;
+    overflow-y: auto;
+    flex: 1;
+    height: calc(631px - 120px);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(198, 237, 0, 1) rgba(233, 234, 233, 1);
+}
+
+/* Стилизация скроллбара для Webkit (Chrome, Safari) */
+.modalBody::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+    background: rgba(233, 234, 233, 1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+    background: rgba(198, 237, 0, 1);
+    border-radius: 20px;
+    min-height: 30px;
+}
+
+/* При наведении меняем цвет */
+.modalBody::-webkit-scrollbar-thumb:hover {
+    background: rgba(178, 217, 0, 1);
+}
+
+/* Убираем стрелки вверх/вниз */
+.modalBody::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Для Firefox */
+.modalBody scrollbar-button {
+    display: none !important;
+}
+
+.modalBody ul {
+    padding-left: 32px;
+    list-style: disc;
+}
+
+.modalBody ol>li {
+    margin-bottom: 24px;
+}
+
+.modalBody a {
+    color: rgba(255, 199, 0, 1);
+}
+
+.contact {
+    padding-left: 32px;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.modalFooter {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeModalFooterButton {
+    width: 182px;
+    height: 56px;
+    padding: 14px 0;
+    background: none;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border: 2px solid rgba(39, 44, 37, 1);
+    color: rgba(39, 44, 37, 1);
+    box-shadow: 4px 4px 0px -2px rgba(255, 255, 255, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.closeModalFooterButton:hover {
+    box-shadow: 4px 4px 0px -2px rgba(39, 44, 37, 1), 4px 4px 0px 0px rgba(39, 44, 37, 1);
+}
+
+.center {
+    text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    .modalContent {
+        height: 100vh;
+        padding: 0;
+    }
+
+    .modalHeader {
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    .modalBody {
+        overflow: none;
+        padding-left: 24px;
+    }
+
+    .modalFooter {
+        justify-content: center;
+    }
+
+
+
+    .closeModalFooterButton {
+        width: 296px;
+        height: 52px;
+    }
+}
