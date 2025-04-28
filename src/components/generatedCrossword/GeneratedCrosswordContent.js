@@ -34,6 +34,14 @@ export default function GeneratedCrosswordContent(props) {
       <div className={styles.container}>
         <Header isCrosswordGenerated={true} user={props.user} />
         <div className={styles.wrapper} id="wrapper" ref={wrapperRef}>
+        {(props.user === null || props.user.generations === 0) && (
+  <div className={styles.guestNotice}>
+    <h2>
+      This is the free version.
+    </h2>
+    <p className="body bodyL bodyLRegular"> You cannot download the crossword or view it without a watermark. For full access, <span className="body bodyL bodyLBold">Sign in</span> and top up your balance.</p>
+  </div>
+)}
           <div className={`${styles.crossword_wrapper} ${watermarkStyle} `}>
             <div className="result"></div>
           </div>

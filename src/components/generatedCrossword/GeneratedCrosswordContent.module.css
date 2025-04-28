@@ -1,6 +1,5 @@
-
-.container{
-    background:url( ../../assets/BG.svg);
+.container {
+    background: url(../../assets/BG.svg);
     background-size: cover;
     background-repeat: repeat;
     background-color: rgba(39, 44, 37, 1);
@@ -10,58 +9,58 @@
     height: 100vh;
 }
 
-.wrapper{
+.wrapper {
     padding: 30px 470px;
     position: relative;
 
 }
 
-.crossword_wrapper{
+.crossword_wrapper {
     padding: 0px 80px;
     background-size: cover;
     background-repeat: repeat;
     background-color: white;
 }
 
-.watermarkBG{
-    
-    background:url( ../../assets/Watermark.svg);
+.watermarkBG {
+
+    background: url(../../assets/Watermark.svg);
     background-color: white;
 }
 
-.noWatermarkBG{
+.noWatermarkBG {
     background: white;
 }
 
-.pdf_wrapper{
+.pdf_wrapper {
     position: absolute;
     top: calc(100% - 62px);
-    left:70%;
+    left: 70%;
 }
 
-.text{
+.text {
     display: none;
 }
 
-.questions_wrapper{
+.questions_wrapper {
     display: flex;
     justify-content: space-between;
     padding: 10px 22px;
     background-color: white;
 }
 
-.questions{
+.questions {
     width: calc(50% - 20px);
-    
+
 }
 
-.questions_header{
+.questions_header {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.questions_header h2{
+.questions_header h2 {
     margin-right: 10px;
     font-size: 18px;
     font-weight: 600;
@@ -71,11 +70,11 @@
 }
 
 
-.question{
+.question {
     margin-bottom: 8px;
 }
 
-.pdfButtonWrapper{
+.pdfButtonWrapper {
     margin-left: 24px;
     position: relative;
     left: 100%;
@@ -84,32 +83,46 @@
     height: 0px;
 }
 
+.guestNotice {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    text-align: center;
+    width: 329px;
+    border-radius: 6px;
+    border-width: 2px;
+    padding: 16px;
+    background: rgba(213, 255, 0, 1);
+    border: 2px solid rgba(39, 44, 37, 1);
+    box-shadow: 3px 3px 0px 0px rgba(25, 25, 25, 1), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
+
+}
 
 @media (max-width: 768px) {
-    .container{
+    .container {
         width: 100%;
     }
 
-    .wrapper{
+    .wrapper {
         padding: 16px;
     }
 
-    .pdf_wrapper{
+    .pdf_wrapper {
         position: static;
         margin-top: 16px;
         width: 100%;
     }
 
-    .pdfButtonWrapper{
+    .pdfButtonWrapper {
         position: static;
         margin: 16px 0 0 0;
         width: 100%;
-        
-        
+
+
     }
 
-    .pdfButtonWrapper button{
+    .pdfButtonWrapper button {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -118,11 +131,20 @@
 
 
     }
-    
 
-    .text{
-        display:inline;
+    .guestNotice {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        max-width: unset;
+        width: auto;
+        z-index: 20;
+    }
+
+    .text {
+        display: inline;
         margin-left: 8px;
-        
+
     }
 }

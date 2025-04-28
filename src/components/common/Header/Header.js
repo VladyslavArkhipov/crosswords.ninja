@@ -41,17 +41,22 @@ export default function Header(props) {
               />
             </>
           ) : (
+            <div className={styles.freeVersionContainer}>
+              <p className={`${styles.freeVersionText} bodyL bodyLBold`}>
+              You are using the free version
+              </p>
             <button
-              className={`${styles.headerButton} bodyL bodyLBold btn btnAdditional`}
+              className={`${styles.headerButton}  btn btnAdditional`}
               onClick={() => setIsAuthorizationVisible(true)}
             >
-              <span className={`${styles.signInText} bodyL bodyLBold`}>
+              <span className={`${styles.signInText} bodyL bodyLExtraBold`}>
                 Sign in
               </span>
               <span className={styles.headerButtonIcon}>
                 <Login />
               </span>
-            </button>
+            </button></div>
+            
           )}
         </div>
       </div>

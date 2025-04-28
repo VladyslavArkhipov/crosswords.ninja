@@ -1,83 +1,98 @@
-.headerWrapper{
+.headerWrapper {
   width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(39, 44, 37, 1);
-    padding: 0 83px;
-    height: 90px;
-  }
-
-  
-  
-  .userInfoContainer, .userInfoWrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .userInfoContainerText{
-    text-align: center;
-    margin-left: 6px;
-    margin-right: 32px;
-    color: rgba(255, 255, 255, 1);
-  }
-  
-  .headerButton{
-    padding: 10px 30px;
-    cursor: pointer;
-  }
-
-  .signInText{
-    display: block;
-  }
-
-  .headerButtonIcon{
-    display: none;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(39, 44, 37, 1);
+  padding: 0 83px;
+  height: 90px;
+}
 
 
-  /* Адаптация под мобильные устройства */
+
+.userInfoContainer,
+.userInfoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userInfoContainerText {
+  text-align: center;
+  margin-left: 6px;
+  margin-right: 32px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.headerButton {
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.signInText {
+  display: block;
+}
+
+.headerButtonIcon {
+  display: none;
+}
+
+.freeVersionContainer {
+  display: flex;
+  gap: 32px;
+}
+
+.freeVersionText {
+  margin: auto;
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+/* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
   .headerWrapper {
-      padding: 21px 16px;
+    padding: 21px 16px;
   }
 
-  .logoContainer{
+  .logoContainer {
     margin-right: 109px;
   }
 
-  .signInText{
+  .signInText {
     display: none;
   }
 
-  .headerButtonIcon{
+  .headerButtonIcon {
     display: block;
   }
 
   .userInfoContainer {
-      display: none;
+    display: none;
   }
 
   .headerButton {
     padding: 12px;
-      height: 48px;
-      width: 48px;
-      display: flex;
-      justify-content: center;
-      align-items: center
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center
   }
 
-  .headerButtonIcon{
+  .headerButtonIcon {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
+  .freeVersionText {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
   .userInfoContainer {
     display: none;
-}
+  }
 }
