@@ -1,4 +1,4 @@
-import styles from "./Title.module.css"; // Импортируйте CSS-модуль
+import styles from "./Title.module.css"; 
 
 import Form from "./Form";
 

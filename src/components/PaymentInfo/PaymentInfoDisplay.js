@@ -10,7 +10,6 @@ export default function PaymentInfoDisplay(props) {
   const [paymentStatus, setPaymentStatus] = useState(null);
 
   useEffect(() => {
-    // Получаем значение transactionStatus из параметров запроса
     const status = searchParams.get("transactionStatus");
     if (status) {
       setPaymentStatus(status);

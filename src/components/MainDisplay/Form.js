@@ -1,8 +1,8 @@
 "use client";
 import { crossgen } from "../../utils/crossgen";
 import React, { useState, useEffect } from "react";
-import styles from "./Form.module.css"; // Импортируйте CSS-модуль
-import { useRouter } from "next/navigation"; // Импортируем хук useRouter
+import styles from "./Form.module.css";
+import { useRouter } from "next/navigation"; 
 import Authorization from "../Authorization/Authorization";
 import InputTag from "../common/InputTag/InputTag";
 import ModalMessage from "../common/ModalMessage/ModalMessage";
@@ -10,7 +10,7 @@ import Loading from "../common/Loading/Loading";
 import Close from "@/assets/Close";
 export default function Form(props) {
   const [words, setWords] = useState("");
-  const router = useRouter(); // Создаем экземпляр роутера
+  const router = useRouter();
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [marginTop, setMarginTop] = useState("");
@@ -105,7 +105,6 @@ export default function Form(props) {
         }
       }
     } else {
-      // Если email отсутствует, показываем модалку для гостя
       setShowGuestModal(true);
     }
   }

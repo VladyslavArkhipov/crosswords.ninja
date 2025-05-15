@@ -11,7 +11,6 @@ export default function Questions(props) {
 
   useEffect(() => {
     if (props.words.length) {
-      // Используем функцию генерации кроссворда
       const [isCrosswordGeneratedSuccesfully, wordsDirection] = crossgen(
         1,
         props.words
@@ -33,16 +32,14 @@ export default function Questions(props) {
             const [_, horizontalQuestions, verticalQuestions] =
               chatGptData.answer.split(/Across:|Down:/);
 
-            // Функция для извлечения вопросов из строки
             const extractQuestions = (questionsString) => {
               return questionsString
                 .trim()
-                .split(/(?=\d\.\s)/) // Разделяем по числу, за которым следует точка и пробел
-                .map((q) => q.trim()) // Убираем лишние пробелы
-                .filter((q) => q); // Убираем пустые элементы
+                .split(/(?=\d\.\s)/) 
+                .map((q) => q.trim()) 
+                .filter((q) => q); 
             };
 
-            // Извлекаем вопросы
             setHorizontalArray(extractQuestions(horizontalQuestions));
             setVerticalArray(extractQuestions(verticalQuestions));
           } else {

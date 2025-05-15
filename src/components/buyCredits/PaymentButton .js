@@ -2,9 +2,8 @@ import CryptoJS from "crypto-js";
 import styles from "./BuyCreditsContent.module.css";
 
 export default function PaymentButton({ choosedGenerations, user }) {
-  // Проверяем, что `user` и `user.email` существуют
   if (!user || !user.email) {
-    return <p>Loading user data...</p>; // или подходящий компонент загрузки
+    return <p>Loading user data...</p>; 
   }
 
   const orderReference =
@@ -22,11 +21,9 @@ export default function PaymentButton({ choosedGenerations, user }) {
     secretKey
   ).toString(CryptoJS.enc.Hex);
 
-  // Функция для обработки отправки формы
   const handleSubmit = (event) => {
-    event.preventDefault(); // предотвращаем автоматическую отправку для логирования данных
+    event.preventDefault(); 
 
-    // Логируем все данные формы в консоль
     console.log("Order Reference:", orderReference);
     console.log("Order Date:", orderDate);
     console.log("Amount:", amount);
@@ -34,7 +31,6 @@ export default function PaymentButton({ choosedGenerations, user }) {
     console.log("Client Email:", user.email);
     console.log("Merchant Signature:", merchantSignature);
 
-    // Теперь отправляем форму
     event.target.submit();
   };
 

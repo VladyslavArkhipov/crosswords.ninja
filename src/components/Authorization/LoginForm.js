@@ -1,5 +1,5 @@
 "use client";
-import styles from "./Authorization.module.css"; // Импортируйте CSS-модуль
+import styles from "./Authorization.module.css";
 import SocialLogins from "./SocialLogins";
 import ShowPass from "@/assets/ShowPass";
 import HidePass from "@/assets/HidePass";
@@ -31,7 +31,7 @@ const LoginForm = () => {
         console.error(response.error);
         setError(response.error.message);
       } else {
-        window.location.reload(); // Перезагрузить страницу
+        window.location.reload(); 
       }
     } catch (e) {
       console.error(e);

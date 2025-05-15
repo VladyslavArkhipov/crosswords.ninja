@@ -1,5 +1,5 @@
 import RegistrationForm from "./RegistrationForm";
-import styles from "./Authorization.module.css"; // Импортируйте CSS-модуль
+import styles from "./Authorization.module.css"; 
 import Close from "@/assets/Close";
 
 export default function Registration({ setIsRegistrationVisible }) {

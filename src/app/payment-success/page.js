@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-// Указываем, что компонент динамический
 export const dynamic = "force-dynamic";
 
 export default function PaymentSuccess() {

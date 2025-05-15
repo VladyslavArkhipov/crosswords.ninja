@@ -17,10 +17,8 @@ export default function DownloadPDFButton(props) {
     const input = props.wrapperRef.current;
     const button = props.buttonRef.current;
 
-    // Скрыть кнопку перед созданием PDF
     if (button) button.style.display = "none";
 
-    // Сохранить текущие стили
     const originalStyles = {
       wrapperPadding: input.style.padding,
       crosswordWrapperPadding: input.querySelector(
@@ -31,7 +29,6 @@ export default function DownloadPDFButton(props) {
       ).style.padding,
     };
 
-    //изменения размера ячеек кроссворда
     const cells = input.querySelectorAll(".cell");
     if (isMobile) {
       cells.forEach((cell, index) => {
@@ -45,10 +42,8 @@ export default function DownloadPDFButton(props) {
       });
     }
 
-    // Применить стили для печати
     if (!isMobile) input.style.padding = "100px";
 
-    // Увеличить размер шрифта всех элементов внутри wrapper в 2 раза
     const originalFontSizes = [];
     const elements = input.querySelectorAll("p, h2, td");
     if (!isMobile) {
@@ -61,7 +56,7 @@ export default function DownloadPDFButton(props) {
 
     html2canvas(input)
       .then((canvas) => {
-        const imgData = canvas.toDataURL("image/jpeg", 0.5); // Используем JPEG формат и сжатие
+        const imgData = canvas.toDataURL("image/jpeg", 0.5); 
         const pdf = new jsPDF();
         const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -69,14 +64,12 @@ export default function DownloadPDFButton(props) {
         pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
         pdf.save("crossword.pdf");
 
-        // Вернуть исходные стили
         input.style.padding = originalStyles.wrapperPadding;
         input.querySelector(`.${styles.crossword_wrapper}`).style.padding =
           originalStyles.crosswordWrapperPadding;
         input.querySelector(`.${styles.questions_wrapper}`).style.padding =
           originalStyles.questionsWrapperPadding;
 
-        // Вернуть исходные размеры шрифта
         elements.forEach((element, index) => {
           element.style.fontSize = originalFontSizes[index];
         });
@@ -86,7 +79,6 @@ export default function DownloadPDFButton(props) {
           cell.style.height = "22px";
         });
 
-        // Показать кнопку снова после генерации PDF
         if (button) button.style.display = "none";
         props.setIsButtonClicked(false);
       })
@@ -94,7 +86,6 @@ export default function DownloadPDFButton(props) {
         console.error("Ошибка при создании PDF:", error);
         props.setIsButtonClicked(false);
       });
-    /*  } */
   };
   return (
     <button

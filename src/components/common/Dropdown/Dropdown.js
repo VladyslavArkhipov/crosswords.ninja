@@ -27,7 +27,6 @@ const Dropdown = (props) => {
     }
   };
 
-  // Закрываем дропдаун при клике вне него
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -35,10 +34,8 @@ const Dropdown = (props) => {
       }
     };
 
-    // Добавляем обработчик клика
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Удаляем обработчик клика при размонтировании
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };

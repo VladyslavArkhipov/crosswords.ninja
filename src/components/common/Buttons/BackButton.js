@@ -5,13 +5,10 @@ import Back from "@/assets/Back";
 import Close from "@/assets/Close";
 
 export default function BackButton() {
-  // Управление состоянием модального окна
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Открыть модальное окно
   const openModal = () => setIsModalOpen(true);
 
-  // Закрыть модальное окно
   const closeModal = () => setIsModalOpen(false);
 
   return (

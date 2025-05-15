@@ -1,6 +1,6 @@
 "use client";
 import Close from "@/assets/Close";
-import styles from "./ModalMessage.module.css"; // Импортируйте CSS-модуль
+import styles from "./ModalMessage.module.css"; 
 import SuccessIcon from "@/assets/SuccessIcon";
 import InfoIcon from "@/assets/InfoIcon";
 import ErrorIcon from "@/assets/ErrorIcon";

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import styles from "./Authorization.module.css"; // Импортируйте CSS-модуль
+import styles from "./Authorization.module.css";
 
 import SocialLogins from "./SocialLogins";
 import ShowPass from "@/assets/ShowPass";
@@ -62,9 +62,8 @@ const RegistrationForm = () => {
   }
 
   useEffect(() => {
-    // Фокусируем на форме после регистрации для удобства ввода новых данных
     if (isUserRegistered && formRef.current) {
-      formRef.current.reset(); // Очистка полей формы
+      formRef.current.reset(); 
     }
   }, [isUserRegistered]);
 

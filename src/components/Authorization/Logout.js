@@ -1,5 +1,5 @@
 import { doLogout } from "@/app/actions";
-import styles from "./Authorization.module.css"; // Импортируйте CSS-модуль
+import styles from "./Authorization.module.css"; 
 
 const Logout = () => {
   return (
